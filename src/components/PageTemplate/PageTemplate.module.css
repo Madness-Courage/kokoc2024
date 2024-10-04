@@ -1,0 +1,25 @@
+.pageContainer {
+    width: 100%;
+    overflow: hidden; /* Убираем скроллинг для самого контейнера */
+}
+
+.backgroundImage {
+    position: fixed; /* Фиксированное положение для плавного эффекта */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Положение за контентом */
+}
+
+.content {
+    position: relative;
+    top: 350px; /* Начинаем контент сразу после изображения */
+    padding: 20px;
+    background-color: white;
+    transition: border-radius 0.3s ease;
+    box-shadow: 0px -10px 30px rgba(0, 0, 0, 0.1);
+    min-height: 100vh; /* Высота контента должна быть как минимум на весь экран */
+}
