@@ -1,0 +1,34 @@
+.navbar {
+    display: flex;
+    justify-content: space-around; /* Сужает расстояние между блоками */
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.block {
+    padding: 10px;
+    margin: 5px; /* Уменьшено до 5px */
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 40px;
+    height: auto;
+}
+
+.link {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.activeLink {
+    color: blue;
+    font-weight: bold;
+}
