@@ -6,9 +6,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--navbar-bg, rgba(255, 255, 255, 0));
     padding: 10px;
-    background-color: transparent;
+    /*background-color: transparent;*/
     z-index: 1000;
+    transition: background-color 0.3s ease; /* Плавное изменение фона */
+    height: 60px;
 }
 
 .block {

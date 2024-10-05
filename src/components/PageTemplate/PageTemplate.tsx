@@ -1,5 +1,4 @@
-// src/components/PageTemplate/PageTemplate.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './PageTemplate.module.css';
 import NavBar from '../NavBar/NavBar';
 
@@ -9,20 +8,36 @@ interface PageTemplateProps {
 }
 
 const PageTemplate: React.FC<PageTemplateProps> = ({ backgroundImage, children }) => {
-    const [scrollPosition, setScrollPosition] = useState(0);
+    const contentRef = useRef<HTMLDivElement>(null); // Создаем реф для контентного блока
 
     const handleScroll = () => {
-        const scrollTop = window.scrollY;
-        setScrollPosition(scrollTop);
+        if (contentRef.current) {
+            // Получаем положение верхней границы контентного блока относительно верхней части экрана
+            const contentTop = contentRef.current.getBoundingClientRect().top;
+
+            // Высчитываем радиус скругления и прозрачность в зависимости от положения контента
+            const borderRadius = Math.max(0, Math.min(30, (contentTop - 70) / 10));
+            // 70 — высота NavBar
+            // const navbarOpacity = Math.min(1, Math.max(0, 1 - (contentTop - 70) / 150)); // Прозрачность от 0 до 1
+            const navbarOpacity = contentTop < 90 ? 1 : 0; // Прозрачность от 0 до 1
+            const overlayOpacity = Math.min(0.5 + (570 - contentTop) / 1200, 0.8); // Затемнение картинки
+
+            // Устанавливаем значения CSS-переменных
+            document.documentElement.style.setProperty('--border-radius', `${borderRadius}px`);
+            document.documentElement.style.setProperty('--navbar-bg', `rgba(255, 255, 255, ${navbarOpacity})`);
+            document.documentElement.style.setProperty('--overlay-opacity', `${overlayOpacity}`);
+        }
     };
 
     useEffect(() => {
+        // Устанавливаем значения по умолчанию для переменных
+        document.documentElement.style.setProperty('--border-radius', '30px');
+        document.documentElement.style.setProperty('--navbar-bg', 'rgba(255, 255, 255, 0)');
+        document.documentElement.style.setProperty('--overlay-opacity', '0.5');
+
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-
-    // Высчитываем радиус на основе прокрутки
-    const borderRadius = Math.max(0, 30 - (scrollPosition + 10) / 10);
 
     return (
         <>
@@ -33,14 +48,11 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ backgroundImage, children }
                     style={{
                         backgroundImage: `url(${backgroundImage})`,
                     }}
-                />
-                <div
-                    className={styles.content}
-                    style={{
-                        borderTopLeftRadius: `${borderRadius}px`,
-                        borderTopRightRadius: `${borderRadius}px`,
-                    }}
                 >
+                    {/* Затемняющий слой */}
+                    <div className={styles.overlay} />
+                </div>
+                <div className={styles.content} ref={contentRef}>
                     {children}
                 </div>
             </div>

@@ -16,9 +16,13 @@ const AppRoutes: React.FC = () => {
                         </PageWithNavBar>
                     }
                 />
-                {/* Добавь другие маршруты здесь */}
-                <Route path="/about" element={<div>About Page</div>} />
+                <Route path="/about" element={<PageWithNavBar>
+                    <div>About Page</div>
+                </PageWithNavBar>}/>
                 <Route path="/contact" element={<div>Contact Page</div>} />
+                {/* Добавь другие маршруты здесь */}
+                {/*<Route path="/about" element={<div>About Page</div>} />*/}
+                {/*<Route path="/contact" element={<div>Contact Page</div>} />*/}
             </Routes>
         </Router>
     );
