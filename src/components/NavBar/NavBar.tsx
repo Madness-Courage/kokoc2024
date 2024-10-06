@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.css';
 import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
@@ -9,9 +9,11 @@ import logo from '../../assets/images/logo.svg';
 import { navigationItems } from '../../config/navigation';
 
 const NavBar: React.FC = () => {
+    const [menuVisible, setMenuVisible] = useState(false); // Управление видимостью меню
+
     useEffect(() => {
-        // Устанавливаем значения по умолчанию для CSS-переменных
-        document.documentElement.style.setProperty('--link-color', 'white'); // Начальный цвет ссылок и иконок
+        // Устанавливаем значения по умолчанию для CSS-переменных и фильтров
+        document.documentElement.style.setProperty('--link-color', 'white');
 
         const handleScroll = () => {
             // Меняем цвет ссылок и иконок в зависимости от фона NavBar
@@ -37,27 +39,47 @@ const NavBar: React.FC = () => {
             {/* Левая часть: Логотип и вкладки */}
             <div className={styles.leftSection}>
                 <img src={logo} alt="Logo" className={styles.logo} />
-                <div className={styles.links}>
-                    {navigationItems.map((page) => (
-                        <NavLink
-                            key={page.path}
-                            to={page.path}
-                            className={({ isActive }) =>
-                                isActive ? `${styles.link} ${styles.activeLink}` : styles.link
-                            }
-                        >
-                            {page.name}
-                        </NavLink>
-                    ))}
-                </div>
+                {/* Вкладки навигации */}
+                {navigationItems.map((page) => (
+                    <NavLink
+                        key={page.path}
+                        to={page.path}
+                        className={({ isActive }) =>
+                            isActive ? `${styles.link} ${styles.activeLink} ${menuVisible ? 'show' : ''}` : `${styles.link} ${menuVisible ? 'show' : ''}`
+                        }
+                        onClick={() => setMenuVisible(false)} // Закрываем меню при переходе по ссылке
+                    >
+                        {page.name}
+                    </NavLink>
+                ))}
             </div>
 
-            {/* Правая часть: Иконки */}
+            {/* Правая часть: Иконки и кнопка меню */}
             <div className={styles.rightSection}>
-                <SearchIcon className={styles.icon} style={{ filter: 'var(--icon-filter)' }} />
-                <ProfileIcon className={styles.icon} style={{ filter: 'var(--icon-filter)' }} />
-                <CartIcon className={styles.icon} style={{ filter: 'var(--icon-filter)' }} />
-                <MenuIcon className={styles.icon} style={{ filter: 'var(--icon-filter)' }}/>
+                <SearchIcon className={styles.icon} />
+                <ProfileIcon className={styles.icon} />
+                <CartIcon className={styles.icon} />
+                <MenuIcon
+                    className={styles.menuIcon}
+                    onClick={() => setMenuVisible(!menuVisible)} // Переключение видимости меню
+                />
+            </div>
+
+            {/* Боковое меню */}
+            <div className={`${styles.sidebarMenu} ${menuVisible ? styles.open : ''}`}>
+                <div className={styles.closeButton} onClick={() => setMenuVisible(false)}>
+                    <MenuIcon className={styles.closeIcon}/> {/* Или заменить на 'X' */}
+                </div>
+                {navigationItems.map((page) => (
+                    <NavLink
+                        key={page.path}
+                        to={page.path}
+                        className={styles.menuLink}
+                        onClick={() => setMenuVisible(false)} // Закрываем меню при переходе по ссылке
+                    >
+                        {page.name}
+                    </NavLink>
+                ))}
             </div>
         </div>
     );
