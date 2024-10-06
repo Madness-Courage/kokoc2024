@@ -14,11 +14,9 @@ const PageTemplate: React.FC<PageTemplateProps> = ({ backgroundImage, children }
         if (contentRef.current) {
             // Получаем положение верхней границы контентного блока относительно верхней части экрана
             const contentTop = contentRef.current.getBoundingClientRect().top;
-
             // Высчитываем радиус скругления и прозрачность в зависимости от положения контента
             const borderRadius = Math.max(0, Math.min(30, (contentTop - 70) / 10));
             // 70 — высота NavBar
-            // const navbarOpacity = Math.min(1, Math.max(0, 1 - (contentTop - 70) / 150)); // Прозрачность от 0 до 1
             const navbarOpacity = contentTop < 90 ? 1 : 0; // Прозрачность от 0 до 1
             const overlayOpacity = Math.min(0.5 + (570 - contentTop) / 1200, 0.8); // Затемнение картинки
 
