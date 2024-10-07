@@ -12,7 +12,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--navbar-bg, rgba(255, 255, 255, 0)); /* Изменяемый цвет фона */
+    background-color: var(
+        --navbar-bg,
+        rgba(255, 255, 255, 0)
+    ); /* Изменяемый цвет фона */
     padding: 10px 20px;
     z-index: 1000;
     transition: background-color 0.3s ease;
@@ -45,6 +48,10 @@
     font-size: 16px;
     position: relative;
     transition: color 0.3s ease;
+
+    transform: none !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
 }
 
 /* Скрытие ссылок на мобильных устройствах */
@@ -69,12 +76,17 @@
 }
 
 .link:hover {
-    color: var(--link-color); /* Цвет при наведении также зависит от переменной */
+    color: var(
+        --link-color
+    ); /* Цвет при наведении также зависит от переменной */
+    text-shadow: none !important;
+    opacity: 1 !important;
 }
 
 .activeLink {
     color: var(--link-color); /* Цвет активной ссылки зависит от переменной */
     font-weight: bold;
+    text-shadow: none;
 }
 
 /* Правая часть: иконки */
@@ -90,7 +102,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--navbar-bg, rgba(255, 255, 255, 0)); /* Изменяемый цвет фона */
+    background-color: var(
+        --navbar-bg,
+        rgba(255, 255, 255, 0)
+    ); /* Изменяемый цвет фона */
     padding: 10px 20px;
     z-index: 1000;
     transition: background-color 0.3s ease;
@@ -126,7 +141,9 @@
 }
 
 .link:hover {
-    color: var(--link-color); /* Цвет при наведении также зависит от переменной */
+    color: var(
+        --link-color
+    ); /* Цвет при наведении также зависит от переменной */
     transform: scale(1.1); /* Легкое увеличение при наведении */
 }
 
@@ -166,7 +183,7 @@
     background-color: white;
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1); /* Тень */
     z-index: 999;
-    transition: right 0.3s ease; /* Плавное открытие */
+    transition: right 0.5s ease; /* Плавное открытие */
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -228,5 +245,3 @@
 .closeButton:hover .closeIcon {
     fill: #ff0000; /* Изменение цвета крестика при наведении */
 }
-
-
