@@ -48,6 +48,10 @@
     font-size: 16px;
     position: relative;
     transition: color 0.3s ease;
+
+    transform: none !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
 }
 
 /* Скрытие ссылок на мобильных устройствах */
@@ -75,11 +79,14 @@
     color: var(
         --link-color
     ); /* Цвет при наведении также зависит от переменной */
+    text-shadow: none !important;
+    opacity: 1 !important;
 }
 
 .activeLink {
     color: var(--link-color); /* Цвет активной ссылки зависит от переменной */
     font-weight: bold;
+    text-shadow: none;
 }
 
 /* Правая часть: иконки */
