@@ -6,7 +6,7 @@ export interface NavigationItem {
 
 // Определяем все страницы, которые будут отображаться в навигации
 export const navigationItems: NavigationItem[] = [
-    { name: 'НОВОСТИ', path: '/' },
+    { name: 'НОВОСТИ', path: '/news' },
     { name: 'МАТЧИ', path: '/about' },
     { name: 'КОМАНДА', path: '/contact' },
 ]

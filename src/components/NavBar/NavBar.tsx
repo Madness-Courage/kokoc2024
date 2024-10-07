@@ -91,21 +91,10 @@ const NavBar: React.FC = () => {
 
             {/* Правая часть: Иконки и кнопка меню */}
             <div className={styles.rightSection}>
-                <SearchIcon
-                    className={styles.icon}
-                    style={{ filter: 'var(--icon-filter)' }}
-                />
-                <ProfileIcon
-                    className={styles.icon}
-                    style={{ filter: 'var(--icon-filter)' }}
-                />
-                <CartIcon
-                    className={styles.icon}
-                    style={{ filter: 'var(--icon-filter)' }}
-                />
-                <MenuIcon
-                    className={styles.icon}
-                    style={{ filter: 'var(--icon-filter)' }}
+                <SearchIcon className={styles.icon} style={{ filter: 'var(--icon-filter)' }} />
+                <ProfileIcon className={styles.icon} style={{ filter: 'var(--icon-filter)' }} />
+                <CartIcon className={styles.icon} style={{ filter: 'var(--icon-filter)' }} />
+                <MenuIcon className={styles.icon} style={{ filter: 'var(--icon-filter)' }}
                     onClick={() => setMenuVisible(!menuVisible)} // Переключение видимости меню
                 />
             </div>

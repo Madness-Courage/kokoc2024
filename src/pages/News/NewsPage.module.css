@@ -1,0 +1,142 @@
+.newsContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Строка поиска */
+.searchWrapper {
+  position: relative;
+  width: 100%; /* Задаем ширину с учетом отступов */
+}
+
+.searchInput {
+  height: 42px;
+  width: 100%; /* Ширина относительно родителя */
+  max-width: 100%; /* Ограничиваем ширину */
+  padding: 10px 40px; /* Отступы для значка поиска внутри */
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  left: 15px; /* Отступ слева внутри поля */
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: #888;
+}
+
+
+.filters {
+  position: relative;
+  /*background-color: darkgray;*/
+  height: 44px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 0 auto 20px auto; /* Центрируем блок и добавляем нижний отступ */
+  width: calc(100%); /* Задаем ширину с учетом отступов */
+}
+
+.category {
+  width: 40%;
+}
+
+.categorySelect {
+  /*position: absolute;*/
+  height: 44px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 10px;
+  width: 100%;
+}
+
+.dates {
+  background-color: white;
+  height: 44px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: -2px 10px 2px 10px;
+  width: 40%;
+}
+
+.clear {
+  background-color: transparent;
+  height: 44px;
+  width: 18%;
+  border: 2px solid #acacac;
+  border-radius: 12px;
+}
+
+.clear::after {
+  content: 'Очистить';
+}
+
+/* Скрываем текст и показываем X на маленьких экранах */
+@media (max-width: 768px) {
+
+  .clear::after {
+    content: 'X'; /* Заменяем текст кнопки на X */
+    font-size: 16px; /* Размер символа X */
+    font-weight: bold;
+  }
+
+  .clear:hover::after {
+    content: '✕'; /* Изменяем стиль при наведении */
+  }
+}
+
+.mainNews {
+  display: flex;
+  gap: 20px;
+}
+
+.mainNewsImage {
+  width: 50%;
+  border-radius: 10px;
+}
+
+.mainNewsContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.newsItem {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.newsImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.newsContent {
+  padding: 10px;
+}
+
+.newsDate {
+  font-size: 12px;
+  color: #888;
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}

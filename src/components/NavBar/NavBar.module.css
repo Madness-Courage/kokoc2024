@@ -1,99 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Gunterz:wght@500&display=swap'); /* Импорт шрифта Gunterz */
 
-:root {
-    --link-color: white; /* Начальный цвет ссылок и иконок */
-}
-
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(
-        --navbar-bg,
-        rgba(255, 255, 255, 0)
-    ); /* Изменяемый цвет фона */
-    padding: 10px 20px;
-    z-index: 1000;
-    transition: background-color 0.3s ease;
-    height: 55px; /* Высота NavBar */
-    font-family: 'Gunterz', sans-serif; /* Применяем шрифт */
-}
-
-/* Левая часть: логотип и ссылки */
-.leftSection {
-    display: flex;
-    align-items: center;
-    flex-grow: 1; /* Заставляет левую часть растягиваться на доступное пространство */
-}
-
-.logo {
-    width: 50px;
-    margin-right: 20px; /* Отступ между логотипом и ссылками */
-}
-
-.links {
-    display: flex;
-    gap: 15px; /* Отступ между ссылками */
-}
-
-.link {
-    padding: 5px 10px;
-    text-decoration: none;
-    color: var(--link-color); /* Используем переменную для изменения цвета */
-    font-weight: 500;
-    font-size: 16px;
-    position: relative;
-    transition: color 0.3s ease;
-
-    transform: none !important;
-    text-shadow: none !important;
-    opacity: 1 !important;
-}
-
-/* Скрытие ссылок на мобильных устройствах */
-@media (max-width: 768px) {
-    .link {
-        display: none; /* Скрываем ссылки */
-    }
-
-    .link.show {
-        display: flex; /* Показываем ссылки при нажатии на кнопку меню */
-        position: absolute; /* Позиционирование меню */
-        top: 55px; /* Смещение вниз на высоту NavBar */
-        left: 0;
-        right: 0;
-        background-color: var(--navbar-bg, white); /* Фон для меню */
-        flex-direction: column; /* Вертикальное расположение ссылок */
-        gap: 10px;
-        padding: 10px;
-        border-top: 1px solid rgba(0, 0, 0, 0.1); /* Разделитель */
-        z-index: 999; /* Положение поверх остальных элементов */
-    }
-}
-
-.link:hover {
-    color: var(
-        --link-color
-    ); /* Цвет при наведении также зависит от переменной */
-    text-shadow: none !important;
-    opacity: 1 !important;
-}
-
-.activeLink {
-    color: var(--link-color); /* Цвет активной ссылки зависит от переменной */
-    font-weight: bold;
-    text-shadow: none;
-}
-
 /* Правая часть: иконки */
 :root {
     --link-color: white; /* Начальный цвет ссылок и иконок */
 }
 
+
 .navbar {
     position: fixed;
     top: 0;
@@ -102,14 +14,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(
-        --navbar-bg,
-        rgba(255, 255, 255, 0)
-    ); /* Изменяемый цвет фона */
-    padding: 10px 20px;
+    background-color: var(--navbar-bg, rgba(255, 255, 255, 0)); /* Изменяемый цвет фона */
+    padding: 10px 20px 10px 20px;
     z-index: 1000;
     transition: background-color 0.3s ease;
-    height: 55px; /* Высота NavBar */
+    height: 70px; /* Высота NavBar */
     font-family: 'Gunterz', sans-serif; /* Применяем шрифт */
 }
 
@@ -154,8 +63,6 @@
 
 /* Правая часть: иконки */
 .rightSection {
-    padding-right: 50px;
-
     display: flex;
     gap: 20px; /* Отступ между иконками */
     align-items: center;
