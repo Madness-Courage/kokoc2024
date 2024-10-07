@@ -1,6 +1,9 @@
 .pageContainer {
     width: 100%;
-    overflow: hidden; /* Убираем любой скролл у контейнера */
+    min-height: 100%; /* Устанавливаем минимальную высоту 100% */
+    overflow: visible; /* Убираем скрытие overflow */
+    display: flex;
+    flex-direction: column; /* Убедимся, что элементы располагаются друг под другом */
 }
 
 .backgroundImage {

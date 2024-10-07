@@ -2,7 +2,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from './pages/Main/MainPage';
+import NewsPage from './pages/News/NewsPage';
 import PageWithNavBar from './layouts/PageWithNavBar';
+import { PrimeReactProvider } from 'primereact/api';
+import 'primereact/resources/primereact.css';
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
 
 const AppRoutes: React.FC = () => {
     return (
@@ -14,6 +18,14 @@ const AppRoutes: React.FC = () => {
                         <PageWithNavBar>
                             <MainPage />
                         </PageWithNavBar>
+                    }
+                />
+                <Route
+                    path="/news"
+                    element={
+                        <PrimeReactProvider>
+                            <NewsPage />
+                        </PrimeReactProvider>
                     }
                 />
                 <Route path="/about" element={<PageWithNavBar>
