@@ -50,7 +50,9 @@
 }
 
 .link:hover {
-    color: var(--link-color); /* Цвет при наведении также зависит от переменной */
+    color: var(
+        --link-color
+    ); /* Цвет при наведении также зависит от переменной */
     transform: scale(1.1); /* Легкое увеличение при наведении */
 }
 
@@ -88,7 +90,7 @@
     background-color: white;
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1); /* Тень */
     z-index: 999;
-    transition: right 0.3s ease; /* Плавное открытие */
+    transition: right 0.5s ease; /* Плавное открытие */
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -150,5 +152,3 @@
 .closeButton:hover .closeIcon {
     fill: #ff0000; /* Изменение цвета крестика при наведении */
 }
-
-
