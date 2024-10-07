@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './NavBar.module.css'
 import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg'
@@ -10,6 +10,7 @@ import { navigationItems } from '../../config/navigation'
 
 const NavBar: React.FC = () => {
     const [menuVisible, setMenuVisible] = useState(false) // Управление видимостью меню
+    const menuRef = useRef<HTMLDivElement>(null) // Добавлено: ссылка на боковое меню
 
     useEffect(() => {
         // Устанавливаем значения по умолчанию для CSS-переменных и фильтров
@@ -44,9 +45,25 @@ const NavBar: React.FC = () => {
             }
         }
 
+        const handleClickOutside = (event: MouseEvent) => {
+            // Закрываем меню, если клик вне его
+            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+                setMenuVisible(false)
+            }
+        }
+
         window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
+        if (menuVisible) {
+            document.addEventListener('mousedown', handleClickOutside) // Добавляем слушатель для кликов вне меню
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [menuVisible])
 
     return (
         <div className={styles.navbar}>
@@ -61,8 +78,8 @@ const NavBar: React.FC = () => {
                         className={({ isActive }) =>
                             isActive
                                 ? `${styles.link} ${styles.activeLink} ${
-                                      menuVisible ? 'show' : ''
-                                  }`
+                                    menuVisible ? 'show' : ''
+                                }`
                                 : `${styles.link} ${menuVisible ? 'show' : ''}`
                         }
                         onClick={() => setMenuVisible(false)} // Закрываем меню при переходе по ссылке
@@ -95,6 +112,7 @@ const NavBar: React.FC = () => {
 
             {/* Боковое меню */}
             <div
+                ref={menuRef} // Добавлено: ссылка на меню
                 className={`${styles.sidebarMenu} ${
                     menuVisible ? styles.open : ''
                 }`}
