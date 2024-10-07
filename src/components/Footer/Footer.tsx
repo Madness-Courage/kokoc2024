@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import tg from '../../assets/icons/tg.svg'
 import vk from '../../assets/icons/vk.svg'
 import logo from '../../assets/images/white-logo.svg'
-import styles from './Footer.module.css'
+import styles from './Footer.module.scss'
 import { navigationItems } from '../../config/navigation'
 
 const Footer: React.FC = () => {
