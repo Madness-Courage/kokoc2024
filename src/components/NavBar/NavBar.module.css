@@ -4,6 +4,10 @@
     --link-color: white; /* Начальный цвет ссылок и иконок */
 }
 
+.navbar > * {
+    overflow-x: visible;
+}
+
 .navbar {
     position: fixed;
     top: 0;
