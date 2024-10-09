@@ -1,9 +1,10 @@
 // src/layouts/PageWithNavBar.tsx
-import React from 'react';
-import NavBar from '../components/NavBar/NavBar';
+import React from 'react'
+import NavBar from '../components/NavBar/NavBar'
+import Footer from '../components/Footer/Footer'
 
 interface PageWithNavBarProps {
-    children: React.ReactNode;
+    children: React.ReactNode
 }
 
 const PageWithNavBar: React.FC<PageWithNavBarProps> = ({ children }) => {
@@ -11,8 +12,9 @@ const PageWithNavBar: React.FC<PageWithNavBarProps> = ({ children }) => {
         <>
             <NavBar />
             <div>{children}</div>
+            <Footer />
         </>
-    );
-};
+    )
+}
 
-export default PageWithNavBar;
+export default PageWithNavBar

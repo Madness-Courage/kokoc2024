@@ -1,0 +1,46 @@
+.buttonContainer {
+    background-color: white;
+    border-radius: 15px;
+    width: 30vw; /* Минимальная ширина */
+    max-width: 1000px; /* Максимальная ширина */
+    height: 100px;
+    position: relative;
+    overflow: hidden; /* Прячем элементы, выходящие за пределы */
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 15px;
+    border: 1px solid lightgrey;
+    box-shadow: darkgray;
+}
+
+.text {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.logo {
+    position: absolute;
+    bottom: -30px; /* Сдвигаем вниз за пределы кнопки */
+    right: -30px; /* Сдвигаем вправо за пределы кнопки */
+    width: 100px;
+    height: 100px;
+    z-index: 1; /* Помещаем логотип за текстом */
+}
+
+@media (max-width: 600px) {
+    .buttonContainer {
+        width: calc(30vw - 10px - 5px - 5px); /* Минимальная ширина */
+    }
+    .logo {
+        /*display: none;*/
+    }
+    .text {
+        font-stretch: expanded;
+        font-size: 15px;
+    }
+}

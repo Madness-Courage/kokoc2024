@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  max-width: 1000px;
 }
 
 /* Строка поиска */
@@ -92,21 +93,106 @@
   }
 }
 
+/* Главная новость */
 .mainNews {
-  display: flex;
-  gap: 20px;
+  position: relative;
+  width: 100%; /* Главная новость занимает всю ширину */
+  height: 300px; /* Фиксированная высота */
+  /*margin-bottom: 20px;*/
+  overflow: hidden; /* Обрезаем содержимое */
+  border-radius: 10px; /* Закругленные углы */
+  transition: transform 0.3s ease;
+}
+
+.mainNews:hover {
+  transform: scale(1.02); /* Легкое увеличение при наведении */
 }
 
 .mainNewsImage {
-  width: 50%;
-  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Картинка заполняет всю карточку */
+  transition: opacity 0.3s ease;
 }
 
-.mainNewsContent {
+/* Затемняющая обёртка */
+.mainNewsOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 50%);
+  /*linear-gradient(to top left, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 30%);*/
+  color: white;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  transition: background 0.3s ease; /* Плавное изменение затемнения */
 }
+
+.mainNews:hover .mainNewsOverlay {
+  background: rgba(0, 0, 0, 0.6); /* Увеличиваем затемнение при наведении */
+}
+
+/* Заголовок главной новости */
+.mainNewsTitle {
+  margin: 0;
+  padding: 0;
+  max-width: 500px;
+  max-height: 150px;
+  overflow: hidden;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* Описание главной новости */
+.mainNewsDescription {
+  margin-top: 0;
+  padding: 0;
+  position: absolute;
+  margin-right: 10px;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: left;
+  opacity: 0; /* По умолчанию скрыто */
+  transition: opacity 0.5s ease; /* Плавное появление/исчезновение */
+  z-index: 2;
+}
+
+.mainNews:hover .mainNewsDescription {
+  opacity: 1; /* Показываем описание при наведении */
+}
+
+.mainNews:hover .mainNewsTitle {
+  opacity: 0; /* Показываем описание при наведении */
+}
+
+
+/* Дата и время */
+.mainNewsDate {
+  display: flex;
+  align-items: center;
+}
+
+/* Дата для главной новости */
+.mainDatePart {
+  font-size: 28px; /* Увеличенный шрифт для даты */
+  font-weight: bold; /* Жирный текст для даты */
+  color: white;
+}
+
+/* Время для главной новости */
+.mainTimePart {
+  font-size: 14px; /* Оставляем стандартный размер шрифта для времени */
+  color: white;
+  margin-left: 5px; /* Отступ между датой и временем */
+}
+
 
 .newsGrid {
   display: grid;
@@ -114,29 +200,60 @@
   gap: 20px;
 }
 
-.newsItem {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  overflow: hidden;
+@media (max-width: 768px) {
+  .newsGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
 }
 
-.newsImage {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.newsContent {
-  padding: 10px;
-}
-
-.newsDate {
-  font-size: 12px;
-  color: #888;
-}
-
+/* Стили пагинации */
 .pagination {
   display: flex;
-  gap: 10px;
   justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  gap: 10px; /* Отступы между элементами пагинации */
+}
+
+.paginationButton {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  color: var(--link-color, black); /* Цвет текста */
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.paginationButton:disabled {
+  color: lightgray;
+  cursor: not-allowed;
+}
+
+.paginationCircle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 0px solid gray;
+  background-color: lightgray;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.paginationCircle:hover {
+  background-color: darkgray;
+}
+
+.activeCircle {
+  background-color: #4771fc; /* Цвет активного круга */
+  color: white;
+  font-weight: bold;
 }
