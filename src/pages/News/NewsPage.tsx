@@ -149,7 +149,7 @@ const NewsModule: React.FC = () => {
     // Действие для перемотки страницы вниз
     const scrollToContent = () => {
         window.scrollTo({
-            top: window.innerHeight, // Прокрутка до следующего экрана
+            top: window.innerHeight + 75, // Прокрутка до следующего экрана
             behavior: 'smooth',
         });
     };
