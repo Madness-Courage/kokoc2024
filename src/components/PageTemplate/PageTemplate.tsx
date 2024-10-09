@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import styles from './PageTemplate.module.css'
 import NavBar from '../NavBar/NavBar'
+import Footer from "../NewFooter/Footer";
 
 interface PageTemplateProps {
     backgroundImage: string
@@ -75,6 +76,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
                     {children}
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
