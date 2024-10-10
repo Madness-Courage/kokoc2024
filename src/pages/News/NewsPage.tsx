@@ -10,123 +10,9 @@ import { ButtonModel } from '../../models/ButtonModel';
 import { NewsItem } from '../../models/NewsModel';
 import InterviewSlider from '../../modules/InterviewSlider/InterviewSlider';
 import { getNews } from '../../api/newsApi';
+import NewsModal from '../../modules/NewsModal/NewsModal';
+import Notification from '../../modules/Notification/Notification';
 
-
-// const initialNews: NewsItem[] = [
-//     {
-//         id: 1,
-//         image: logoPlaceholder,
-//         title: 'Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость ',
-//         description: 'Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней ',
-//         date: '2024-10-06',
-//         time: '12:00',
-//         isImportant: true,
-//         link: '',
-//     },
-//     {
-//         id: 2,
-//         image: logoPlaceholder,
-//         title: 'Интервью: Нога Акинфеева',
-//         description: 'Интервью: Нога Акинфеева',
-//         date: '2024-10-05',
-//         time: '10:09',
-//         isImportant: false,
-//         link: '',
-//     },
-//     {
-//         id: 3,
-//         image: logoPlaceholder,
-//         title: 'Новость 2',
-//         description: 'Описание новости с возможностью перейти к ней',
-//         date: '2024-10-05',
-//         time: '10:08',
-//         isImportant: false,
-//         link: '',
-//     },
-//     {
-//         id: 4,
-//         image: logoPlaceholder,
-//         title: 'Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость ',
-//         description: 'Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней ',
-//
-//         date: '2024-10-05',
-//         time: '10:07',
-//         isImportant: false,
-//         link: '',
-//     },
-//     {
-//         id: 5,
-//         image: logoPlaceholder,
-//         title: 'Новость 2',
-//         description: 'Описание новости с возможностью перейти к ней',
-//         date: '2024-10-05',
-//         time: '10:06',
-//         isImportant: false,
-//         link: '',
-//     },
-//     {
-//         id: 6,
-//         image: logoPlaceholder,
-//         title: 'Интервью с капитаном команды',
-//         description: 'Описание новости с возможностью перейти к ней',
-//         date: '2024-10-05',
-//         time: '10:05',
-//         isImportant: false,
-//         link: '',
-//     },
-//     {
-//         id: 7,
-//         image: logoPlaceholder,
-//         title: 'Новость 2',
-//         description: 'Описание новости с возможностью перейти к ней',
-//         date: '2024-10-05',
-//         time: '10:04',
-//         isImportant: false,
-//         link: '',
-//     },
-//     {
-//         id: 8,
-//         image: logoPlaceholder,
-//         title: 'Новость 2',
-//         description: 'Описание новости с возможностью перейти к ней',
-//         date: '2024-10-05',
-//         time: '10:03',
-//         isImportant: false,
-//         link: '',
-//     },
-//     {
-//         id: 9,
-//         image: logoPlaceholder,
-//         title: 'Новость 2',
-//         description: 'Описание новости с возможностью перейти к ней',
-//         date: '2024-10-05',
-//         time: '10:02',
-//         isImportant: false,
-//         link: '',
-//     },
-//     {
-//         id: 10,
-//         image: logoPlaceholder,
-//         title: 'Новость 2',
-//         description: 'Описание новости с возможностью перейти к ней',
-//         date: '2024-10-05',
-//         time: '10:01',
-//         isImportant: false,
-//         link: '',
-//     },
-//     {
-//         id: 11,
-//         image: logoPlaceholder,
-//         title: 'Новость 2',
-//         description: 'Описание новости с возможностью перейти к ней',
-//         date: '2024-10-05',
-//         time: '10:00',
-//         isImportant: false,
-//         link: '',
-//     },
-//
-//     // Добавь сюда другие новости
-// ];
 
 const initialDateRange: Date[] = [
     new Date(2001, 8, 11), // 11 сентября 2001 года
@@ -134,13 +20,14 @@ const initialDateRange: Date[] = [
 ];
 
 const NewsModule: React.FC = () => {
-    // const [news, setNews] = useState(initialNews);
     const [searchQuery, setSearchQuery] = useState('');
     const [category, setCategory] = useState('');
-    // @ts-ignore
     const [dateRange, setDateRange] = useState<Date[] | null>(initialDateRange);
     const [currentPage, setCurrentPage] = useState(1);
     const [news, setNews] = useState<NewsItem[]>([]);
+    const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null); // Выбранная новость для модального окна
+    const [isModalOpen, setIsModalOpen] = useState(false); // Состояние открытия модального окна
+    const [notification, setNotification] = useState('');
 
     useEffect(() => {
         // Загружаем новости при монтировании компонента
@@ -152,10 +39,33 @@ const NewsModule: React.FC = () => {
         loadNews();
     }, []);
 
-    const newsPerPage = currentPage === 1 ? 6 : 9; // 7 новостей на первой странице, 9 на остальных
+    // Закрытие модального окна и сброс выбранной новости
+    // Обработчик клика по новости — открывает модальное окно и устанавливает выбранную новость
+    const handleNewsClick = (newsItem: NewsItem) => {
+        setSelectedNews(newsItem);
+        setIsModalOpen(true);
+    };
 
+    // Закрытие модального окна и сброс выбранной новости
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedNews(null);
+    };
+
+    // Показ уведомления при нажатии на кнопку "Видео"
+    const showNotification = () => {
+        setNotification('Этот раздел пока не готов, но мы работаем над его добавлением');
+    };
+
+    const closeNotification = () => {
+        setNotification('');
+    };
+
+    // 7 новостей на первой странице, 9 на остальных
+    const newsPerPage = currentPage === 1 ? 6 : 9;
     // Вычисляем начальный и конечный индекс новостей для текущей страницы
     const startIndex = currentPage === 1 ? 0 : 6 + (currentPage - 2) * 9;
+
     const endIndex = startIndex + newsPerPage;
 
     // Действие для перемотки страницы вниз
@@ -182,7 +92,7 @@ const NewsModule: React.FC = () => {
     const buttons: ButtonModel[] = [
         { text: 'Новости', action: scrollToContent },
         { text: 'Галерея', link: 'https://www.google.com' },
-        { text: 'Видео', link: 'https://www.google.com' },
+        { text: 'Видео', action: showNotification  },
     ];
 
     return (
@@ -255,9 +165,14 @@ const NewsModule: React.FC = () => {
                         .filter((item) => item.id !== importantNews?.id) // Исключаем главную новость из списка остальных
                         .slice(startIndex, endIndex) // Пагинация для остальных новостей
                         .map((item) => (
-                            <NewsCard key={item.id} item={item} />
+                            <div key={item.id} onClick={() => handleNewsClick(item)}>
+                                <NewsCard key={item.id} item={item} />
+                            </div>
                         ))}
                 </div>
+
+                {/* Модальное окно с выбранной новостью */}
+                <NewsModal isOpen={isModalOpen} onClose={closeModal} newsItem={selectedNews} />
 
 
                 {/* Пагинация */}
@@ -293,6 +208,11 @@ const NewsModule: React.FC = () => {
                 </div>
 
                 <InterviewSlider news={news} />
+
+                {/* Уведомление, если оно активно */}
+                {notification && (
+                    <Notification message={notification} onClose={closeNotification} />
+                )}
 
             </div>
         </PageTemplate>

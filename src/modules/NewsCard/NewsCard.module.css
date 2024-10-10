@@ -76,6 +76,9 @@
     font-size: 14px;
     line-height: 1.4;
     text-align: left;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Отображает только 3 строки */
+    -webkit-box-orient: vertical;
     opacity: 0; /* По умолчанию скрываем описание */
     transition: opacity 0.5s ease; /* Плавное появление/исчезновение */
     z-index: 2; /* Повышаем слой описания */

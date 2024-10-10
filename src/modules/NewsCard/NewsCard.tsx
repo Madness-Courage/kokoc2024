@@ -31,6 +31,11 @@ const NewsCard: React.FC<NewsItemProps> = ({ item }) => {
         return () => window.removeEventListener('resize', checkOverflow);
     }, []);
 
+    const stripMarkdown = (markdownText: string) => {
+        // Используем регулярное выражение для удаления основных Markdown-символов
+        return markdownText.replace(/([#*_>`~\[\]()])/g, '').replace(/!\[.*\]\(.*\)/g, '');
+    };
+
     return (
         <div className={`${styles.newsItem} ${isOverflowing ? styles.overflowing : ''}`}>
             {/* Картинка новости */}
@@ -38,7 +43,7 @@ const NewsCard: React.FC<NewsItemProps> = ({ item }) => {
             {/* Текст и описание */}
             <div className={styles.newsOverlay}>
                 <h3 ref={titleRef} className={styles.newsTitle}>{item.title}</h3>
-                <p ref={descriptionRef} className={styles.newsDescription}>{item.description}</p>
+                <p ref={descriptionRef} className={styles.newsDescription}>{stripMarkdown(item.description)}</p>
                 <span className={styles.newsDate}>
                     {/* Форматируем дату в ДД.ММ */}
                     <span className={styles.datePart}>
