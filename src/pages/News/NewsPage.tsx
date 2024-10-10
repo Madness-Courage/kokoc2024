@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './NewsPage.module.css';
 import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
 import PageTemplate from '../../components/PageTemplate/PageTemplate';
@@ -9,123 +9,124 @@ import ActionMenu from '../../modules/ActionMenu/ActionMenu';
 import { ButtonModel } from '../../models/ButtonModel';
 import { NewsItem } from '../../models/NewsModel';
 import InterviewSlider from '../../modules/InterviewSlider/InterviewSlider';
+import { getNews } from '../../api/newsApi';
 
 
-const initialNews: NewsItem[] = [
-    {
-        id: 1,
-        image: logoPlaceholder,
-        title: 'Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость ',
-        description: 'Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней ',
-        date: '2024-10-06',
-        time: '12:00',
-        isImportant: true,
-        link: '',
-    },
-    {
-        id: 2,
-        image: logoPlaceholder,
-        title: 'Интервью: Нога Акинфеева',
-        description: 'Интервью: Нога Акинфеева',
-        date: '2024-10-05',
-        time: '10:09',
-        isImportant: false,
-        link: '',
-    },
-    {
-        id: 3,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:08',
-        isImportant: false,
-        link: '',
-    },
-    {
-        id: 4,
-        image: logoPlaceholder,
-        title: 'Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость ',
-        description: 'Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней ',
-
-        date: '2024-10-05',
-        time: '10:07',
-        isImportant: false,
-        link: '',
-    },
-    {
-        id: 5,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:06',
-        isImportant: false,
-        link: '',
-    },
-    {
-        id: 6,
-        image: logoPlaceholder,
-        title: 'Интервью с капитаном команды',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:05',
-        isImportant: false,
-        link: '',
-    },
-    {
-        id: 7,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:04',
-        isImportant: false,
-        link: '',
-    },
-    {
-        id: 8,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:03',
-        isImportant: false,
-        link: '',
-    },
-    {
-        id: 9,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:02',
-        isImportant: false,
-        link: '',
-    },
-    {
-        id: 10,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:01',
-        isImportant: false,
-        link: '',
-    },
-    {
-        id: 11,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:00',
-        isImportant: false,
-        link: '',
-    },
-
-    // Добавь сюда другие новости
-];
+// const initialNews: NewsItem[] = [
+//     {
+//         id: 1,
+//         image: logoPlaceholder,
+//         title: 'Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость ',
+//         description: 'Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней ',
+//         date: '2024-10-06',
+//         time: '12:00',
+//         isImportant: true,
+//         link: '',
+//     },
+//     {
+//         id: 2,
+//         image: logoPlaceholder,
+//         title: 'Интервью: Нога Акинфеева',
+//         description: 'Интервью: Нога Акинфеева',
+//         date: '2024-10-05',
+//         time: '10:09',
+//         isImportant: false,
+//         link: '',
+//     },
+//     {
+//         id: 3,
+//         image: logoPlaceholder,
+//         title: 'Новость 2',
+//         description: 'Описание новости с возможностью перейти к ней',
+//         date: '2024-10-05',
+//         time: '10:08',
+//         isImportant: false,
+//         link: '',
+//     },
+//     {
+//         id: 4,
+//         image: logoPlaceholder,
+//         title: 'Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость Главная новость ',
+//         description: 'Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней Описание главной новости с возможностью перейти к ней ',
+//
+//         date: '2024-10-05',
+//         time: '10:07',
+//         isImportant: false,
+//         link: '',
+//     },
+//     {
+//         id: 5,
+//         image: logoPlaceholder,
+//         title: 'Новость 2',
+//         description: 'Описание новости с возможностью перейти к ней',
+//         date: '2024-10-05',
+//         time: '10:06',
+//         isImportant: false,
+//         link: '',
+//     },
+//     {
+//         id: 6,
+//         image: logoPlaceholder,
+//         title: 'Интервью с капитаном команды',
+//         description: 'Описание новости с возможностью перейти к ней',
+//         date: '2024-10-05',
+//         time: '10:05',
+//         isImportant: false,
+//         link: '',
+//     },
+//     {
+//         id: 7,
+//         image: logoPlaceholder,
+//         title: 'Новость 2',
+//         description: 'Описание новости с возможностью перейти к ней',
+//         date: '2024-10-05',
+//         time: '10:04',
+//         isImportant: false,
+//         link: '',
+//     },
+//     {
+//         id: 8,
+//         image: logoPlaceholder,
+//         title: 'Новость 2',
+//         description: 'Описание новости с возможностью перейти к ней',
+//         date: '2024-10-05',
+//         time: '10:03',
+//         isImportant: false,
+//         link: '',
+//     },
+//     {
+//         id: 9,
+//         image: logoPlaceholder,
+//         title: 'Новость 2',
+//         description: 'Описание новости с возможностью перейти к ней',
+//         date: '2024-10-05',
+//         time: '10:02',
+//         isImportant: false,
+//         link: '',
+//     },
+//     {
+//         id: 10,
+//         image: logoPlaceholder,
+//         title: 'Новость 2',
+//         description: 'Описание новости с возможностью перейти к ней',
+//         date: '2024-10-05',
+//         time: '10:01',
+//         isImportant: false,
+//         link: '',
+//     },
+//     {
+//         id: 11,
+//         image: logoPlaceholder,
+//         title: 'Новость 2',
+//         description: 'Описание новости с возможностью перейти к ней',
+//         date: '2024-10-05',
+//         time: '10:00',
+//         isImportant: false,
+//         link: '',
+//     },
+//
+//     // Добавь сюда другие новости
+// ];
 
 const initialDateRange: Date[] = [
     new Date(2001, 8, 11), // 11 сентября 2001 года
@@ -133,18 +134,29 @@ const initialDateRange: Date[] = [
 ];
 
 const NewsModule: React.FC = () => {
-    const [news, setNews] = useState(initialNews);
+    // const [news, setNews] = useState(initialNews);
     const [searchQuery, setSearchQuery] = useState('');
     const [category, setCategory] = useState('');
     // @ts-ignore
     const [dateRange, setDateRange] = useState<Date[] | null>(initialDateRange);
     const [currentPage, setCurrentPage] = useState(1);
+    const [news, setNews] = useState<NewsItem[]>([]);
+
+    useEffect(() => {
+        // Загружаем новости при монтировании компонента
+        const loadNews = async () => {
+            const initialNews = await getNews();
+            setNews(initialNews);
+        };
+
+        loadNews();
+    }, []);
+
     const newsPerPage = currentPage === 1 ? 6 : 9; // 7 новостей на первой странице, 9 на остальных
 
     // Вычисляем начальный и конечный индекс новостей для текущей страницы
     const startIndex = currentPage === 1 ? 0 : 6 + (currentPage - 2) * 9;
     const endIndex = startIndex + newsPerPage;
-    const displayedNews = initialNews.slice(startIndex, endIndex); // Новости для отображения на текущей странице
 
     // Действие для перемотки страницы вниз
     const scrollToContent = () => {
@@ -155,7 +167,7 @@ const NewsModule: React.FC = () => {
     };
 
     // Вычисляем общее количество страниц
-    const totalPages = Math.ceil((initialNews.length - 7) / 9) + 1; // 1 страница на 7 новостей + остальные
+    const totalPages = Math.ceil((news.length - 7) / 9) + 1; // 1 страница на 7 новостей + остальные
 
     const importantNews = news.filter((item) => item.isImportant).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0];
     const otherNews = news.filter((item) => !item.isImportant);
@@ -164,6 +176,7 @@ const NewsModule: React.FC = () => {
         setSearchQuery('');
         setCategory('');
         setDateRange([...initialDateRange]);
+        console.log(news);
     };
 
     const buttons: ButtonModel[] = [
@@ -279,7 +292,7 @@ const NewsModule: React.FC = () => {
                     </button>
                 </div>
 
-                <InterviewSlider news={initialNews} />
+                <InterviewSlider news={news} />
 
             </div>
         </PageTemplate>

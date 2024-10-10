@@ -9,7 +9,6 @@ interface InterviewSliderProps {
 const InterviewSlider: React.FC<InterviewSliderProps> = ({ news }) => {
     // Фильтруем новости с заголовком "Интервью"
     const interviews = news.filter((item) => item.title.includes('Интервью')).slice(-10); // Последние 10 новостей
-    console.log(interviews)
     const [currentIndex, setCurrentIndex] = useState(0); // Текущий индекс слайдера
     const [progress, setProgress] = useState(0); // Прогресс заполнения активной полоски
     const intervalRef = useRef<NodeJS.Timeout | null>(null); // Реф для хранения интервала
