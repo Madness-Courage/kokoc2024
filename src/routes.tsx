@@ -15,9 +15,8 @@ const AppRoutes: React.FC = () => {
                 <Route
                     path='/'
                     element={
-                        <PageWithNavBar>
+
                             <MainPage />
-                        </PageWithNavBar>
                     }
                 />
                 <Route
@@ -29,6 +28,7 @@ const AppRoutes: React.FC = () => {
                     }
                 />
                 <Route path='/contact' element={<div>Contact Page</div>} />
+                <Route
                     path="/news"
                     element={
                         <PrimeReactProvider>

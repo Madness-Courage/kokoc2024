@@ -1,0 +1,10 @@
+.menuContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Отступ между кнопками */
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%; /* Ширина контейнера для всех кнопок */
+    overflow-x: auto; /* Горизонтальная прокрутка при необходимости */
+    padding: 10px 0;
+}

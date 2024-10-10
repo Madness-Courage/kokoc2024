@@ -1,0 +1,138 @@
+.footer {
+    width: 100%;
+    background-color: #d12e2e; /* Красный цвет фона */
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Ширина контента */
+    width: 100%;
+    padding: 0 20px;
+    gap: 20px;
+}
+
+.logoSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-basis: 20%; /* Логотип занимает 20% */
+    margin: 0;
+}
+
+.logo {
+    width: 60px; /* Размер логотипа */
+    height: auto;
+    left: 0;
+    right: 0;
+    margin: auto;
+    /*margin-bottom: 10px;*/
+}
+
+.description {
+    color: white;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.linksSection {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-grow: 1;
+    gap: 30px;
+}
+
+.linkColumn,
+.textColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-basis: 15%;
+    align-items: flex-start;
+}
+
+.link {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #f0f0f0;
+}
+
+.columnTitle {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.columnText {
+    color: white;
+    font-size: 14px;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 20px;
+    flex-basis: 10%; /* Социальные иконки занимают 10% */
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    fill: white;
+    cursor: pointer;
+    transition: fill 0.3s ease;
+}
+
+.icon:hover {
+    fill: #f0f0f0;
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+    .footerContent {
+        flex-direction: column; /* Располагаем элементы в колонку */
+        align-items: center;
+        text-align: center;
+        gap: 0;
+    }
+
+    .logoSection {
+        align-items: center;
+    }
+
+    .description {
+        margin-top: 10px; /* Отступ сверху */
+        text-align: center; /* Центрируем текст под логотипом */
+    }
+
+    .linksSection {
+        margin-top: 0;
+        display: flex;
+        flex-direction: row; /* Сохраняем столбцы в строке */
+        flex-wrap: nowrap; /* Отключаем перенос строк */
+        justify-content: space-evenly; /* Равномерное распределение столбцов */
+        width: 100%;
+    }
+
+    .linkColumn, .textColumn {
+        width: 25%; /* Ширина каждого столбца равная */
+        text-align: left; /* Сохраняем выравнивание текста */
+    }
+
+    .socialIcons {
+        margin-top:10px;
+        justify-content: center;
+        align-items: center;
+    }
+}

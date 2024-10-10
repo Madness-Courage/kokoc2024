@@ -1,125 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './NewsPage.module.css';
 import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
-import { ReactComponent as ClearIcon } from '../../assets/icons/menu.svg';
 import PageTemplate from '../../components/PageTemplate/PageTemplate';
-import logoPlaceholder from '../../assets/images/placeholder.jpg';
+import logoPlaceholder from '../../assets/images/placeholder_3.png';
 import RangePick from '../../modules/DatePicker/DatePicker'
+import NewsCard from '../../modules/NewsCard/NewsCard'
+import ActionMenu from '../../modules/ActionMenu/ActionMenu';
+import { ButtonModel } from '../../models/ButtonModel';
+import { NewsItem } from '../../models/NewsModel';
+import InterviewSlider from '../../modules/InterviewSlider/InterviewSlider';
+import { getNews } from '../../api/newsApi';
+import NewsModal from '../../modules/NewsModal/NewsModal';
+import Notification from '../../modules/Notification/Notification';
 
-
-interface NewsItem {
-    id: number;
-    image: string;
-    title: string;
-    description: string;
-    date: string;
-    time: string;
-    isImportant: boolean;
-}
-
-const initialNews: NewsItem[] = [
-    {
-        id: 1,
-        image: logoPlaceholder,
-        title: 'Главная новость',
-        description: 'Описание главной новости с возможностью перейти к ней',
-        date: '2024-10-06',
-        time: '12:00',
-        isImportant: true,
-    },
-    {
-        id: 2,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:09',
-        isImportant: false,
-    },
-    {
-        id: 3,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:08',
-        isImportant: false,
-    },
-    {
-        id: 4,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:07',
-        isImportant: false,
-    },
-    {
-        id: 5,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:06',
-        isImportant: false,
-    },
-    {
-        id: 6,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:05',
-        isImportant: false,
-    },
-    {
-        id: 7,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:04',
-        isImportant: false,
-    },
-    {
-        id: 8,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:03',
-        isImportant: false,
-    },
-    {
-        id: 9,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:02',
-        isImportant: false,
-    },
-    {
-        id: 10,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:01',
-        isImportant: false,
-    },
-    {
-        id: 11,
-        image: logoPlaceholder,
-        title: 'Новость 2',
-        description: 'Описание новости с возможностью перейти к ней',
-        date: '2024-10-05',
-        time: '10:00',
-        isImportant: false,
-    },
-
-    // Добавь сюда другие новости
-];
 
 const initialDateRange: Date[] = [
     new Date(2001, 8, 11), // 11 сентября 2001 года
@@ -127,11 +20,64 @@ const initialDateRange: Date[] = [
 ];
 
 const NewsModule: React.FC = () => {
-    const [news, setNews] = useState(initialNews);
     const [searchQuery, setSearchQuery] = useState('');
     const [category, setCategory] = useState('');
-    // @ts-ignore
     const [dateRange, setDateRange] = useState<Date[] | null>(initialDateRange);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [news, setNews] = useState<NewsItem[]>([]);
+    const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null); // Выбранная новость для модального окна
+    const [isModalOpen, setIsModalOpen] = useState(false); // Состояние открытия модального окна
+    const [notification, setNotification] = useState('');
+
+    useEffect(() => {
+        // Загружаем новости при монтировании компонента
+        const loadNews = async () => {
+            const initialNews = await getNews();
+            setNews(initialNews);
+        };
+
+        loadNews();
+    }, []);
+
+    // Закрытие модального окна и сброс выбранной новости
+    // Обработчик клика по новости — открывает модальное окно и устанавливает выбранную новость
+    const handleNewsClick = (newsItem: NewsItem) => {
+        setSelectedNews(newsItem);
+        setIsModalOpen(true);
+    };
+
+    // Закрытие модального окна и сброс выбранной новости
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedNews(null);
+    };
+
+    // Показ уведомления при нажатии на кнопку "Видео"
+    const showNotification = () => {
+        setNotification('Этот раздел пока не готов, но мы работаем над его добавлением');
+    };
+
+    const closeNotification = () => {
+        setNotification('');
+    };
+
+    // 7 новостей на первой странице, 9 на остальных
+    const newsPerPage = currentPage === 1 ? 6 : 9;
+    // Вычисляем начальный и конечный индекс новостей для текущей страницы
+    const startIndex = currentPage === 1 ? 0 : 6 + (currentPage - 2) * 9;
+
+    const endIndex = startIndex + newsPerPage;
+
+    // Действие для перемотки страницы вниз
+    const scrollToContent = () => {
+        window.scrollTo({
+            top: window.innerHeight + 75, // Прокрутка до следующего экрана
+            behavior: 'smooth',
+        });
+    };
+
+    // Вычисляем общее количество страниц
+    const totalPages = Math.ceil((news.length - 7) / 9) + 1; // 1 страница на 7 новостей + остальные
 
     const importantNews = news.filter((item) => item.isImportant).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0];
     const otherNews = news.filter((item) => !item.isImportant);
@@ -140,11 +86,20 @@ const NewsModule: React.FC = () => {
         setSearchQuery('');
         setCategory('');
         setDateRange([...initialDateRange]);
+        console.log(news);
     };
+
+    const buttons: ButtonModel[] = [
+        { text: 'Новости', action: scrollToContent },
+        { text: 'Галерея', link: 'https://www.google.com' },
+        { text: 'Видео', action: showNotification  },
+    ];
 
     return (
         <PageTemplate backgroundImage={logoPlaceholder}>
             <div className={styles.newsContainer}>
+                {/*<div className={styles.ActionButtons}*/}
+                <ActionMenu buttons={buttons} />
                 {/* Поиск */}
                 <div className={styles.searchWrapper}>
                     <input
@@ -181,48 +136,84 @@ const NewsModule: React.FC = () => {
 
                 </div>
 
-
-
                 {/* Главная новость */}
-                {importantNews && (
+                {importantNews && currentPage === 1 && (
                     <div className={styles.mainNews}>
-                        <img src={importantNews.image} alt={importantNews.title} className={styles.mainNewsImage}/>
-                        <div className={styles.mainNewsContent}>
-                            <h2>{importantNews.title}</h2>
-                            <p>{importantNews.description}</p>
+                        {/* Картинка новости */}
+                        <img src={importantNews.image} alt={importantNews.title} className={styles.mainNewsImage} />
+                        <div className={styles.mainNewsOverlay}>
+                            <h2 className={styles.mainNewsTitle}>{importantNews.title}</h2>
+                            <p className={styles.mainNewsDescription}>{importantNews.description}</p>
                             <span className={styles.mainNewsDate}>
-                            {importantNews.date} — {importantNews.time}
-                        </span>
+                {/* Разделяем дату и время */}
+                                <span className={styles.mainDatePart}>
+                    {new Date(importantNews.date).toLocaleDateString('ru-RU', {
+                        day: '2-digit',
+                        month: '2-digit',
+                    })}
+                </span>
+                <span className={styles.mainTimePart}> — {importantNews.time}</span>
+            </span>
                         </div>
                     </div>
                 )}
 
+
                 {/* Другие новости */}
                 <div className={styles.newsGrid}>
-                    {otherNews.map((item) => (
-                        <div key={item.id} className={styles.newsItem}>
-                            <img src={item.image} alt={item.title} className={styles.newsImage}/>
-                            <div className={styles.newsContent}>
-                                <h3>{item.title}</h3>
-                                <p>{item.description}</p>
-                                <span className={styles.newsDate}>
-                                {item.date} — {item.time}
-                            </span>
+                    {otherNews
+                        .filter((item) => item.id !== importantNews?.id) // Исключаем главную новость из списка остальных
+                        .slice(startIndex, endIndex) // Пагинация для остальных новостей
+                        .map((item) => (
+                            <div key={item.id} onClick={() => handleNewsClick(item)}>
+                                <NewsCard key={item.id} item={item} />
                             </div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
+
+                {/* Модальное окно с выбранной новостью */}
+                <NewsModal isOpen={isModalOpen} onClose={closeModal} newsItem={selectedNews} />
+
 
                 {/* Пагинация */}
                 <div className={styles.pagination}>
-                    <button>{'<'}</button>
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>...</span>
-                    <span>9</span>
-                    <button>{'>'}</button>
+                    {/* Кнопка для перехода на предыдущую страницу */}
+                    <button
+                        className={styles.paginationButton}
+                        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                        disabled={currentPage === 1} // Отключаем кнопку, если это первая страница
+                    >
+                        {'<'}
+                    </button>
+
+                    {/* Номера страниц */}
+                    {Array.from({ length: totalPages }, (_, index) => (
+                        <button
+                            key={index + 1}
+                            className={`${styles.paginationCircle} ${currentPage === index + 1 ? styles.activeCircle : ''}`}
+                            onClick={() => setCurrentPage(index + 1)}
+                        >
+                            {index + 1}
+                        </button>
+                    ))}
+
+                    {/* Кнопка для перехода на следующую страницу */}
+                    <button
+                        className={styles.paginationButton}
+                        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                        disabled={currentPage === totalPages} // Отключаем кнопку, если это последняя страница
+                    >
+                        {'>'}
+                    </button>
                 </div>
+
+                <InterviewSlider news={news} />
+
+                {/* Уведомление, если оно активно */}
+                {notification && (
+                    <Notification message={notification} onClose={closeNotification} />
+                )}
+
             </div>
         </PageTemplate>
     );
