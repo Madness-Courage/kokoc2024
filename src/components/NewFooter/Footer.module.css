@@ -22,12 +22,16 @@
     flex-direction: column;
     align-items: flex-start;
     flex-basis: 20%; /* Логотип занимает 20% */
+    margin: 0;
 }
 
 .logo {
     width: 60px; /* Размер логотипа */
     height: auto;
-    margin-bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    /*margin-bottom: 10px;*/
 }
 
 .description {
@@ -50,6 +54,7 @@
     flex-direction: column;
     gap: 10px;
     flex-basis: 15%;
+    align-items: flex-start;
 }
 
 .link {
@@ -67,6 +72,7 @@
     color: white;
     font-size: 16px;
     font-weight: bold;
+    margin: 0;
 }
 
 .columnText {
@@ -98,11 +104,11 @@
         flex-direction: column; /* Располагаем элементы в колонку */
         align-items: center;
         text-align: center;
+        gap: 0;
     }
 
     .logoSection {
         align-items: center;
-        margin-bottom: 20px;
     }
 
     .description {
@@ -111,22 +117,21 @@
     }
 
     .linksSection {
+        margin-top: 0;
         display: flex;
         flex-direction: row; /* Сохраняем столбцы в строке */
         flex-wrap: nowrap; /* Отключаем перенос строк */
         justify-content: space-evenly; /* Равномерное распределение столбцов */
         width: 100%;
-        margin-bottom: 20px; /* Отступ снизу */
     }
 
     .linkColumn, .textColumn {
-        flex-basis: auto; /* Изменяем размер столбцов */
         width: 25%; /* Ширина каждого столбца равная */
         text-align: left; /* Сохраняем выравнивание текста */
     }
 
     .socialIcons {
-        margin-top: 20px;
+        margin-top:10px;
         justify-content: center;
         align-items: center;
     }
