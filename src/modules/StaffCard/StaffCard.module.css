@@ -1,0 +1,36 @@
+.card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 0;
+    width: 200px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.image {
+    width: 100%;
+    height: 300px; /* Пропорции 2 на 3 */
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.dateOfBirth,
+.role {
+    font-size: 14px;
+    color: #666;
+}
