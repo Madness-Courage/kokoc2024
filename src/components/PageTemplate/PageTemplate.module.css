@@ -14,7 +14,7 @@
     height: calc(100vh - 80px); /* Высота картинки */
     background-size: cover;
     background-position: center;
-    z-index: -1; /* Положение за контентом */
+    z-index: -3; /* Положение за контентом */
 }
 
 /* Затемняющий слой для фонового изображения */
@@ -31,6 +31,7 @@
         var(--overlay-opacity)
     ); /* Затемнение с прозрачностью */
     transition: background 0.3s ease; /* Плавное изменение затемнения */
+    z-index: -1;
 }
 
 .content {
