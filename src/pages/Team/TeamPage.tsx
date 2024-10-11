@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PageTemplate from '../../components/PageTemplate/PageTemplate';
-import logoPlaceholder from '../../assets/images/placeholder_3.png';
+import logoPlaceholder from '../../assets/images/placeholder.jpg';
 import ActionMenu from '../../modules/ActionMenu/ActionMenu';
 import Notification from '../../modules/Notification/Notification';
 import PlayerCard from '../../modules/PlayerCard/PlayerCard';
@@ -91,7 +91,7 @@ const TeamPage: React.FC = () => {
     ];
 
     return (
-        <PageTemplate backgroundImage={logoPlaceholder}>
+        <PageTemplate backgroundImages={[logoPlaceholder]}>
             <div className={styles.teamContainer}>
                 <ActionMenu buttons={buttons} />
 

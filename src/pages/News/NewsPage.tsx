@@ -96,7 +96,7 @@ const NewsModule: React.FC = () => {
     ];
 
     return (
-        <PageTemplate backgroundImage={logoPlaceholder}>
+        <PageTemplate backgroundImages={[logoPlaceholder]}>
             <div className={styles.newsContainer}>
                 {/*<div className={styles.ActionButtons}*/}
                 <ActionMenu buttons={buttons} />
