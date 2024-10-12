@@ -141,4 +141,11 @@ iframe {
     padding: 20px;
 }
 
-
+@media (max-width: 768px) {
+    .title {
+        font-size: 30px;
+    }
+    .tabButton {
+        font-size: 18px;
+    }
+}

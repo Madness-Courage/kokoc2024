@@ -102,3 +102,33 @@
     z-index: 2; /* Устанавливаем z-index выше для контента */
 }
 
+/* Мобильные стили */
+@media (max-width: 768px) {
+    .matchCard {
+        flex-direction: column;
+    }
+
+    .matchDetails {
+        gap: 10px;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .place {
+        margin-top: 5px;
+    }
+
+    .teams {
+        gap: 10px;
+    }
+
+    .vs {
+        margin: 0;
+    }
+
+    .registration{
+        margin-top: 0;
+    }
+}
+
