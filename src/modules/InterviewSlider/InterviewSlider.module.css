@@ -1,0 +1,72 @@
+/* Контейнер слайдера */
+.sliderContainer {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Размер аналогичный главной новости */
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* Слайд */
+.sliderItem {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: opacity 0.5s ease;
+}
+
+/* Полупрозрачное наложение названия */
+.titleOverlay {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    font-size: 28px; /* Увеличим размер текста */
+    color: white; /* Цвет текста как у новостей */
+    padding: 0; /* Убираем padding */
+    background: none; /* Убираем подложку */
+    font-weight: bold;
+    opacity: 0.5;
+}
+
+/* Контейнер для полосок прогресса */
+.progressBarContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 30%;
+    margin: auto;
+    bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; /* Расстояние между полосками */
+    background: rgba(0, 0, 0, 0.4); /* Полупрозрачная подложка для прогрессбара */
+    padding: 5px; /* Отступ от полосок прогресса */
+    border-radius: 10px; /* Скругленные углы для подложки */
+}
+
+/* Полоска прогресса */
+.progressBarSegment {
+    height: 3px; /* Высота сегмента */
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Активная полоска */
+.activeSegment {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Заполнение активной полоски */
+.progressFill {
+    height: 100%;
+    background-color: orangered; /* Цвет заполнения активной полоски */
+    transition: width 0.1s ease;
+}

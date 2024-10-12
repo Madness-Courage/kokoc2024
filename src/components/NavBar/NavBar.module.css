@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Gunterz:wght@500&display=swap'); /* Импорт шрифта Gunterz */
+
+/* Правая часть: иконки */
+:root {
+    --link-color: white; /* Начальный цвет ссылок и иконок */
+}
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--navbar-bg, rgba(255, 255, 255, 0)); /* Изменяемый цвет фона */
+    padding: 10px 20px 10px 20px;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+    height: 70px; /* Высота NavBar */
+    font-family: 'Gunterz', sans-serif; /* Применяем шрифт */
+}
+
+/* Левая часть: логотип и ссылки */
+.leftSection {
+    display: flex;
+    align-items: center;
+    flex-grow: 0; /* Заставляет левую часть растягиваться на доступное пространство */
+}
+
+.logo {
+    width: 50px;
+    margin-right: 20px; /* Отступ между логотипом и ссылками */
+}
+
+.links {
+    display: flex;
+    gap: 15px; /* Отступ между ссылками */
+}
+
+.link {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: var(--link-color); /* Используем переменную для изменения цвета */
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.link:hover {
+    color: var(
+        --link-color
+    ); /* Цвет при наведении также зависит от переменной */
+    transform: scale(1.1); /* Легкое увеличение при наведении */
+}
+
+.activeLink {
+    color: var(--link-color); /* Цвет активной ссылки зависит от переменной */
+    font-weight: bold;
+}
+
+/* Правая часть: иконки */
+.rightSection {
+    display: flex;
+    gap: 20px; /* Отступ между иконками */
+    align-items: center;
+    flex-grow: 0; /* Иконки не растягиваются */
+}
+
+/* Скрытие ссылок в мобильной версии */
+@media (max-width: 768px) {
+    .link {
+        display: none; /* Скрытие ссылок по умолчанию */
+    }
+
+    .link.show {
+        display: block; /* Показать ссылки при открытии меню */
+    }
+}
+
+/* Стили бокового меню */
+.sidebarMenu {
+    position: fixed;
+    top: 0;
+    right: -350px; /* Скрыто за экраном */
+    width: 300px; /* Ширина бокового меню */
+    height: 100vh;
+    background-color: white;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1); /* Тень */
+    z-index: 999;
+    transition: right 0.5s ease; /* Плавное открытие */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+}
+
+.sidebarMenu.open {
+    right: 0; /* Положение меню, когда оно открыто */
+}
+
+.menuLink {
+    text-decoration: none;
+    color: black; /* Используем переменную для изменения цвета */
+    font-weight: 500;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.menuLink:hover {
+    color: #007bff; /* Цвет при наведении */
+}
+
+/* Правая часть: иконки */
+.rightSection {
+    display: flex;
+    gap: 20px; /* Отступ между иконками */
+    align-items: center;
+    justify-content: flex-end; /* Прижимаем иконки к правому краю */
+    flex-grow: 0; /* Иконки не растягиваются */
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    filter: brightness(0) invert(1); /* Начальный фильтр для белого цвета */
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.icon:hover {
+    transform: scale(1.1); /* Легкое увеличение при наведении */
+    filter: brightness(1) invert(1); /* Инвертируем обратно при наведении */
+}
+
+/* Стили для кнопки закрытия меню */
+.closeButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.closeIcon {
+    width: 24px;
+    height: 24px;
+    fill: black; /* Используем переменную для изменения цвета */
+}
+
+.closeButton:hover .closeIcon {
+    fill: #ff0000; /* Изменение цвета крестика при наведении */
+}
