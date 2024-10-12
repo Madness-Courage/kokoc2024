@@ -14,9 +14,7 @@ export const getNews = async (): Promise<NewsItem[]> => {
                 limit: 10, // Ограничение количества новостей
             }
         });
-        console.log(response);
         const newsData = response.data;
-        console.log(newsData);
 
         // Преобразуем данные с сервера в структуру NewsItem[]
         const formattedNews: NewsItem[] = newsData.map((news: any) => ({
