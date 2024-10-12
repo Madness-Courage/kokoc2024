@@ -1,0 +1,62 @@
+.overlayContainer,
+.overlayContainer2 {
+    position: fixed;
+    top: 35vh;
+    left: 25px; /* Отступ слева */
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Выравнивание по левому краю */
+    z-index: 0;
+    color: rgba(255, 255, 255, 0.8); /* Установим начальную прозрачность */
+    text-align: left;
+    pointer-events: none;
+    animation: slideIn 0.8s ease forwards; /* Анимация появления */
+}
+
+.overlayContainer2 {
+    color: rgba(255, 255, 255, 1); /* Установим начальную прозрачность */
+}
+
+/* Кнопка "Вернуться на главную" */
+.backButton {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8); /* Устанавливаем прозрачность */
+    font-size: 20px; /* Увеличиваем размер шрифта */
+    cursor: pointer;
+    pointer-events: auto;
+    margin-bottom: 0px;
+    transition: transform 0.3s ease;
+}
+
+.backButton:hover {
+    transform: translateX(-5px); /* Небольшой сдвиг при наведении */
+}
+
+.backIcon {
+    width: 28px; /* Увеличиваем размер иконки */
+    height: 28px;
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 48px; /* Увеличиваем размер шрифта */
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Тень для текста */
+}
+
+/* Анимация появления текста с вылетом и плавной прозрачностью */
+@keyframes slideIn {
+    0% {
+        transform: translateX(-20px); /* Начальный сдвиг влево */
+        opacity: 0; /* Полная прозрачность */
+    }
+    100% {
+        transform: translateX(0); /* Позиция по умолчанию */
+        opacity: 0.8; /* Итоговая прозрачность */
+    }
+}

@@ -5,6 +5,8 @@ import MainPage from './pages/Main/MainPage'
 import NewsPage from './pages/News/NewsPage'
 import PageWithNavBar from './layouts/PageWithNavBar'
 import { PrimeReactProvider } from 'primereact/api'
+import TeamPage from './pages/Team/TeamPage'
+import MatchesPage from './pages/Matches/MatchesPage'
 import 'primereact/resources/primereact.css'
 import 'primereact/resources/themes/lara-light-indigo/theme.css'
 
@@ -15,19 +17,22 @@ const AppRoutes: React.FC = () => {
                 <Route
                     path='/'
                     element={
-
                             <MainPage />
                     }
                 />
                 <Route
-                    path='/about'
+                    path='/matches'
                     element={
-                        <PageWithNavBar>
-                            <div>About Page</div>
-                        </PageWithNavBar>
+                        <PrimeReactProvider>
+                            <MatchesPage />
+                        </PrimeReactProvider>
                     }
                 />
-                <Route path='/contact' element={<div>Contact Page</div>} />
+                <Route path='/team' element={
+                    <PrimeReactProvider>
+                        <TeamPage />
+                    </PrimeReactProvider>
+                } />
                 <Route
                     path="/news"
                     element={
