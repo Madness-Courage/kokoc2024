@@ -100,3 +100,45 @@ iframe {
     right: 0;
     margin: auto;
 }
+
+/* src/pages/MatchesPage.module.css */
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Высота контейнера загрузки */
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: red; /* Цвет индикатора */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.errorMessage {
+    text-align: center;
+    color: #888;
+    font-size: 16px;
+    padding: 20px;
+}
+
+.noMatchesMessage {
+    text-align: center;
+    color: #888;
+    font-size: 16px;
+    padding: 20px;
+}
+
+
