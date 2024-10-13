@@ -1,5 +1,5 @@
 // src/routes.tsx
-import React from 'react';
+import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import MainPage from './pages/Main/MainPage'
 import NewsPage from './pages/News/NewsPage'
@@ -9,17 +9,13 @@ import TeamPage from './pages/Team/TeamPage'
 import MatchesPage from './pages/Matches/MatchesPage'
 import 'primereact/resources/primereact.css'
 import 'primereact/resources/themes/lara-light-indigo/theme.css'
+import AboutPage from './pages/About/AboutPage'
 
 const AppRoutes: React.FC = () => {
     return (
         <Router>
             <Routes>
-                <Route
-                    path='/'
-                    element={
-                            <MainPage />
-                    }
-                />
+                <Route path='/' element={<MainPage />} />
                 <Route
                     path='/matches'
                     element={
@@ -28,16 +24,27 @@ const AppRoutes: React.FC = () => {
                         </PrimeReactProvider>
                     }
                 />
-                <Route path='/team' element={
-                    <PrimeReactProvider>
-                        <TeamPage />
-                    </PrimeReactProvider>
-                } />
                 <Route
-                    path="/news"
+                    path='/team'
+                    element={
+                        <PrimeReactProvider>
+                            <TeamPage />
+                        </PrimeReactProvider>
+                    }
+                />
+                <Route
+                    path='/news'
                     element={
                         <PrimeReactProvider>
                             <NewsPage />
+                        </PrimeReactProvider>
+                    }
+                />
+                <Route
+                    path='/about'
+                    element={
+                        <PrimeReactProvider>
+                            <AboutPage />
                         </PrimeReactProvider>
                     }
                 />
