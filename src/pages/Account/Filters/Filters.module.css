@@ -1,0 +1,35 @@
+.filters {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.filterInput {
+    border: 2px solid #cbcbcb;
+    border-radius: 16px;
+    appearance: none;
+    flex: 1;
+    padding: 20px 32px;
+    font-family: MuseoSansCyrl;
+    font-size: 20px;
+    font-weight: 500;
+    color: #747474;
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+}
+
+.filterButton {
+    display: flex;
+    align-items: center;
+    border: 2px solid #868686;
+    border-radius: 16px;
+    gap: 55px;
+    padding: 20px 32px;
+}
+
+.filterButtonText {
+    color: #868686;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 700;
+}

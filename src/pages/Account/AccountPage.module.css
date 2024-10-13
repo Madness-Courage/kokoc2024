@@ -1,0 +1,89 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+    padding: 64px 120px;
+    gap: 40px;
+}
+
+.headerBlock {
+    display: flex;
+    align-items: flex-end;
+}
+
+.backButton {
+    gap: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: MuseoSansCyrl;
+    font-size: 24px;
+    font-weight: 500;
+    color: #707070;
+    cursor: pointer;
+}
+
+.mainBlock {
+    display: flex;
+    gap: 32px;
+}
+
+.navigationBlock {
+    gap: 16px;
+    display: flex;
+    padding: 40px 32px;
+    flex-direction: column;
+    background-color: #f6f6f6;
+    border-radius: 16px;
+}
+
+.navigationItem {
+    font-family: MuseoSansCyrl;
+    font-size: 24px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #a8a8b7;
+}
+
+.navigationItemSelected {
+    font-weight: 700;
+    color: #343434;
+}
+
+.contentBlock {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 43px;
+}
+
+.titleBlock {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-family: MuseoSansCyrl;
+    font-size: 48px;
+    font-weight: 900;
+    color: #525252;
+    text-transform: uppercase;
+}
+
+.editButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 32px;
+    gap: 96px;
+    background: #e22726;
+    border-radius: 99px;
+}
+
+.editButton > span {
+    text-transform: uppercase;
+    font-family: MuseoSansCyrl;
+    font-size: 24px;
+    font-weight: 700;
+    color: #f9f9f9;
+}

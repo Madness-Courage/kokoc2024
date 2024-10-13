@@ -1,0 +1,14 @@
+.history {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 40px;
+}
+
+.title {
+    font-family: MuseoSansCyrl;
+    font-size: 40px;
+    font-weight: 900;
+    color: #777777;
+    text-transform: uppercase;
+}
