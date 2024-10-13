@@ -1,0 +1,14 @@
+.aboutPage {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    padding: 100px;
+}
+
+.title {
+    font-family: MuseoSansCyrl;
+    font-size: 64px;
+    font-weight: 900;
+    color: #343434;
+    text-transform: uppercase;
+}

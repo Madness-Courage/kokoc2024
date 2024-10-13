@@ -1,3 +1,33 @@
+@font-face {
+    font-family: MuseoSansCyrl;
+    font-weight: 500;
+    src: url('./assets/fonts/museo_sans_cyrl_500.ttf');
+}
+
+@font-face {
+    font-family: MuseoSansCyrl;
+    font-weight: 700;
+    src: url('./assets/fonts/museo_sans_cyrl_700.ttf');
+}
+
+@font-face {
+    font-family: MuseoSansCyrl;
+    font-weight: 900;
+    src: url('./assets/fonts/museo_sans_cyrl_900.ttf');
+}
+
+@font-face {
+    font-family: Poppins;
+    font-weight: 400;
+    src: url('./assets/fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: Poppins;
+    font-weight: 700;
+    src: url('./assets/fonts/Poppins-Bold.ttf');
+}
+
 /* Удаление дефолтных стилей */
 body,
 html {
