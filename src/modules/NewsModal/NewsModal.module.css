@@ -4,28 +4,26 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Полупрозрачный фон */
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    overflow: hidden; /* Скрываем скролл в родительском контейнере */
 }
 
 .modalContent {
     background: white;
     width: 600px;
     max-width: 90%;
-    max-height: 90vh; /* Ограничение на максимальную высоту */
+    max-height: 90vh;
     border-radius: 10px;
     padding: 20px;
-    overflow: hidden; /* Скрываем overflow */
+    overflow-y: auto; /* Прокрутка для всего модального окна */
     position: relative;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    animation: slideIn 0.3s ease-out; /* Анимация появления */
+    animation: slideIn 0.3s ease-out;
 }
 
-/* Анимация появления */
 @keyframes slideIn {
     from {
         transform: translateY(-50px);
@@ -41,32 +39,43 @@
     width: 100%;
     height: 200px;
     overflow: hidden;
-    border-radius: 10px; /* Скругленные углы сверху */
+    border-radius: 10px;
 }
 
 .newsImage {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Изображение обрезается, чтобы занять весь контейнер */
+    height
+    : 100%;
+    object-fit: cover;
 }
 
 .newsTitle {
-    margin: 20px 0 10px;
-    font-size: 24px;
+    margin: 0px 0 10px;
+    font-size: 36px;
     color: #333;
 }
 
-/* Описание новости с прокруткой */
 .newsDescription {
     font-size: 16px;
     color: #666;
     line-height: 1.6;
     white-space: pre-wrap;
-    max-height: 400px; /* Ограничиваем высоту описания */
-    overflow-y: auto; /* Прокрутка внутри описания */
+    margin-bottom: 20px; /* Отступ от блока описания до блока комментариев */
 }
 
-/* Кнопка закрытия */
+.commentsSection {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd; /* Разделительная линия между описанием и комментариями */
+}
+
+.commentsTitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
 .closeButton {
     position: absolute;
     top: 10px;
@@ -84,5 +93,9 @@
 }
 
 .closeIcon:hover {
-    fill: #f00; /* Изменение цвета при наведении */
+    fill: #f00;
+}
+
+h1 {
+
 }

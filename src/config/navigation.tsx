@@ -9,4 +9,5 @@ export const navigationItems: NavigationItem[] = [
     { name: 'НОВОСТИ', path: '/news' },
     { name: 'МАТЧИ', path: '/matches' },
     { name: 'КОМАНДА', path: '/team' },
+    { name: 'О КЛУБЕ', path: '/about' },
 ]

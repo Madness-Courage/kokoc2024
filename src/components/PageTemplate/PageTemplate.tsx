@@ -7,6 +7,7 @@ import BackgroundCarousel from './BackgroundCarousel/BackgroundCarousel';
 import BackgroundTextOverlay from './BackgroundTextOverlay/BackgroundTextOverlay';
 import { navigationItems } from '../../config/navigation'; // Импортируем навигационные элементы
 import { NewsItem } from '../../models/NewsModel'; // Импорт модели NewsItem
+import placeholder3 from '../../assets/images/placeholder_3.png';
 
 interface PageTemplateProps {
     backgroundImages?: string[]; // Список изображений (необязательное поле)
@@ -17,6 +18,13 @@ interface PageTemplateProps {
 const PageTemplate: React.FC<PageTemplateProps> = ({ backgroundImages, newsItem, children }) => {
     const contentRef = useRef<HTMLDivElement>(null);
     const location = useLocation();
+    if (backgroundImages == undefined && newsItem == undefined) {
+        backgroundImages = [placeholder3];
+    }
+    if (newsItem?.length == 0) {
+        backgroundImages = [placeholder3];
+        newsItem = undefined;
+    }
 
     const handleScroll = () => {
         if (contentRef.current) {
