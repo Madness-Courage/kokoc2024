@@ -4,7 +4,8 @@ import { Match } from '../models/MatchModel';
 // Функция для получения матчей с сервера
 export const getMatches = async (): Promise<Match[]> => {
     try {
-        const response = await axios.get('http://localhost:3004/api/matches');
+        const response = await axios.get('http://192.168.1.66:3004/api/matches');
+        console.log(response.data)
         return response.data;
     } catch (error: unknown) {
         if (axios.isAxiosError(error)) {

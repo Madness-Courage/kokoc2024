@@ -50,12 +50,18 @@
 }
 
 .teamName {
-    font-size: 10px;
+    font-size: 14px;
     font-weight: normal;
     text-align: center;
 }
 
 .vs {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 20px;
+}
+
+.score {
     font-size: 24px;
     font-weight: bold;
     margin: 0 20px;
@@ -102,6 +108,8 @@
     z-index: 2; /* Устанавливаем z-index выше для контента */
 }
 
+
+
 /* Мобильные стили */
 @media (max-width: 768px) {
     .matchCard {
@@ -130,5 +138,29 @@
     .registration{
         margin-top: 0;
     }
+}
+
+/* Вертикальное расположение */
+.vertical {
+    flex-direction: column;
+}
+
+.vertical .matchDetails {
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.vertical .teams {
+    gap: 10px;
+}
+
+.vertical .vs {
+    margin: 0;
+}
+
+.vertical .registration {
+    margin-top: 0;
 }
 
