@@ -1,10 +1,13 @@
 export interface Match {
-    date: string;
-    time: string;
-    place: string;
-    opponentName: string;
-    opponentLogo: string;
-    registerLink: string;
-    airUrl?: string; // Ссылка на трансляцию (необязательное поле)
-    isActive?: boolean; // Флаг, активен ли матч для трансляции (необязательное поле)
+    team1: string;
+    team1_logo_url: string;
+    team2: string;
+    team2_logo_url: string;
+    team1_goals: number;
+    team2_goals: number;
+    stadium: string;
+    start_time: string;  // Timestamp or date string
+    stream_url?: string;
+    registration_form_url: string;
+    isActive: string;
 }
