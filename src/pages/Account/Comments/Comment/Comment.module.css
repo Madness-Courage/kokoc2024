@@ -1,0 +1,51 @@
+.comment {
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f6f6;
+    padding: 32px;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.topBlock {
+    display: flex;
+    justify-content: space-between;
+}
+
+.date {
+    font-family: MuseoSansCyrl;
+    font-size: 20px;
+    font-weight: 500;
+    color: #747474;
+}
+
+.bottomBlock {
+    display: flex;
+    gap: 16px;
+}
+
+.image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.textsBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.names {
+    font-family: MuseoSansCyrl;
+    font-size: 24px;
+    font-weight: 700;
+    color: #3a3a3a;
+}
+
+.text {
+    font-family: MuseoSansCyrl;
+    font-size: 20px;
+    font-weight: 700;
+    color: #838383;
+}

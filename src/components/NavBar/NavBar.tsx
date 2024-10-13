@@ -1,14 +1,24 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import styles from './NavBar.module.css'
 import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg'
+import { ReactComponent as SearchDarkIcon } from '../../assets/icons/search-dark.svg'
 import { ReactComponent as ProfileIcon } from '../../assets/icons/account.svg'
+import { ReactComponent as ProfileDarkIcon } from '../../assets/icons/account-dark.svg'
 import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg'
+import { ReactComponent as CartDarkIcon } from '../../assets/icons/cart-dark.svg'
 import { ReactComponent as MenuIcon } from '../../assets/icons/menu.svg'
+import { ReactComponent as MenuDarkIcon } from '../../assets/icons/menu-dark.svg'
 import logo from '../../assets/images/logo.svg'
 import { navigationItems } from '../../config/navigation'
 
-const NavBar: React.FC = () => {
+interface NavBarProps {
+    dark?: boolean
+}
+
+const NavBar: React.FC<NavBarProps> = ({ dark = false }) => {
+    const navigate = useNavigate()
+
     const [menuVisible, setMenuVisible] = useState(false) // Управление видимостью меню
     const menuRef = useRef<HTMLDivElement>(null) // Добавлено: ссылка на боковое меню
 
@@ -47,7 +57,10 @@ const NavBar: React.FC = () => {
 
         const handleClickOutside = (event: MouseEvent) => {
             // Закрываем меню, если клик вне его
-            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+            if (
+                menuRef.current &&
+                !menuRef.current.contains(event.target as Node)
+            ) {
                 setMenuVisible(false)
             }
         }
@@ -78,10 +91,13 @@ const NavBar: React.FC = () => {
                         className={({ isActive }) =>
                             isActive
                                 ? `${styles.link} ${styles.activeLink} ${
-                                    menuVisible ? 'show' : ''
-                                }`
+                                      menuVisible ? 'show' : ''
+                                  }`
                                 : `${styles.link} ${menuVisible ? 'show' : ''}`
                         }
+                        style={{
+                            color: dark ? 'black' : undefined,
+                        }}
                         onClick={() => setMenuVisible(false)} // Закрываем меню при переходе по ссылке
                     >
                         {page.name}
@@ -91,10 +107,38 @@ const NavBar: React.FC = () => {
 
             {/* Правая часть: Иконки и кнопка меню */}
             <div className={styles.rightSection}>
-                <SearchIcon     className={styles.icon}     style={{ filter: 'var(--icon-filter)' }} />
-                <ProfileIcon    className={styles.icon}     style={{ filter: 'var(--icon-filter)' }} />
-                <CartIcon       className={styles.icon}     style={{ filter: 'var(--icon-filter)' }} />
-                <MenuIcon       className={styles.icon}     style={{ filter: 'var(--icon-filter)' }}
+                <SearchIcon
+                    className={styles.icon}
+                    style={{
+                        filter: dark
+                            ? 'brightness(1) invert(1)'
+                            : 'var(--icon-filter)',
+                    }}
+                />
+                <ProfileIcon
+                    onClick={() => navigate('/account')}
+                    className={styles.icon}
+                    style={{
+                        filter: dark
+                            ? 'brightness(1) invert(1)'
+                            : 'var(--icon-filter)',
+                    }}
+                />
+                <CartIcon
+                    className={styles.icon}
+                    style={{
+                        filter: dark
+                            ? 'brightness(1) invert(1)'
+                            : 'var(--icon-filter)',
+                    }}
+                />
+                <MenuIcon
+                    className={styles.icon}
+                    style={{
+                        filter: dark
+                            ? 'brightness(1) invert(1)'
+                            : 'var(--icon-filter)',
+                    }}
                     onClick={() => setMenuVisible(!menuVisible)} // Переключение видимости меню
                 />
             </div>

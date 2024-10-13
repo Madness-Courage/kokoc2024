@@ -1,0 +1,19 @@
+.subscriptions {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.subscriptionsBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.title {
+    font-family: MuseoSansCyrl;
+    font-size: 40px;
+    font-weight: 900;
+    color: #777777;
+    text-transform: uppercase;
+}
