@@ -1,0 +1,74 @@
+.collectionsPage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 120px;
+    gap: 120px;
+}
+
+.title {
+    font-family: MuseoSansCyrl;
+    font-size: 64px;
+    font-weight: 900;
+    color: #343434;
+    text-transform: uppercase;
+}
+
+.collectionBlock {
+    display: flex;
+    flex: 1;
+    gap: 40px;
+    flex-direction: column;
+}
+
+.imagesBlock {
+    display: flex;
+    gap: 32px;
+}
+
+.imagesBlock .goodsBlock {
+    display: flex;
+    flex: 1;
+    gap: 32px;
+}
+
+.firstImagesBlock {
+    height: 876px;
+}
+
+.firstImagesBlock .goodsBlock {
+    flex-direction: column;
+}
+
+.secondImagesBlock {
+    flex-direction: column;
+}
+
+.secondImagesBlock .goodsBlock .textsBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.secondImagesBlock .goodsBlock .textsBlock .title {
+    font-family: MuseoSansCyrl;
+    font-size: 48px;
+    font-weight: 900;
+    color: #000;
+}
+
+.secondImagesBlock .goodsBlock .textsBlock .subtitle {
+    font-family: MuseoSansCyrl;
+    font-size: 40px;
+    font-weight: 300;
+    color: #000;
+}
+
+.secondImagesBlock .firstGoodsBlock {
+    min-height: 876px;
+}
+
+.secondImagesBlock .goodsBlock > * {
+    gap: 32px;
+    flex: 1;
+}
