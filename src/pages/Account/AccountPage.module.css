@@ -50,63 +50,9 @@
     color: #343434;
 }
 
-.contentBlock {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 43px;
-}
-
-.titleBlock {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.title {
-    font-family: MuseoSansCyrl;
-    font-size: 48px;
-    font-weight: 900;
-    color: #525252;
-    text-transform: uppercase;
-}
-
-.editButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 32px;
-    gap: 96px;
-    background: #e22726;
-    border-radius: 99px;
-}
-
-.editButton > span {
-    text-transform: uppercase;
-    font-family: MuseoSansCyrl;
-    font-size: 24px;
-    font-weight: 700;
-    color: #f9f9f9;
-}
-
 @media (max-width: 1440px) {
     .page {
         padding: 48px 96px;
-    }
-
-    .title {
-        font-size: 36px;
-    }
-
-    .editButton {
-        padding: 16px 28px;
-        gap: 64px;
-    }
-
-    .editButton > span {
-        font-size: 20px;
     }
 
     .navigationBlock {
@@ -123,19 +69,6 @@
         padding: 32px 64px;
     }
 
-    .title {
-        font-size: 24px;
-    }
-
-    .editButton {
-        padding: 14px 24px;
-        gap: 48px;
-    }
-
-    .editButton > span {
-        font-size: 18px;
-    }
-
     .navigationBlock {
         padding: 32px 24px;
     }
@@ -148,19 +81,6 @@
 @media (max-width: 768px) {
     .page {
         padding: 24px 64px;
-    }
-
-    .title {
-        font-size: 20px;
-    }
-
-    .editButton {
-        padding: 12px 20px;
-        gap: 48px;
-    }
-
-    .editButton > span {
-        font-size: 16px;
     }
 
     .navigationBlock {

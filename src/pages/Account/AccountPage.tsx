@@ -21,31 +21,31 @@ export const navigationItems = [
         text: 'Личная информация',
         relativePath: 'information',
         absolutePath: '/account/information',
-        element: Information,
+        element: <Information />,
     },
     {
         text: 'Подписки',
         relativePath: 'subscriptions',
         absolutePath: '/account/subscriptions',
-        element: Subscriptions,
+        element: <Subscriptions />,
     },
     {
         text: 'История покупок',
         relativePath: 'history',
         absolutePath: '/account/history',
-        element: History,
+        element: <History />,
     },
     {
         text: 'Посещенные матчи',
         relativePath: 'matches',
         absolutePath: '/account/matches',
-        element: Matches,
+        element: <Matches />,
     },
     {
         text: 'Комментарии',
         relativePath: 'comments',
         absolutePath: '/account/comments',
-        element: Comments,
+        element: <Comments />,
     },
 ]
 
@@ -82,36 +82,19 @@ const AccountPage: React.FC = () => {
                             </span>
                         ))}
                     </div>
-                    <div className={styles.contentBlock}>
-                        <div className={styles.titleBlock}>
-                            <span className={styles.title}>
-                                {
-                                    navigationItems.find(
-                                        (item) =>
-                                            item.absolutePath ===
-                                            location.pathname
-                                    )?.text
-                                }
-                            </span>
-                            <div className={styles.editButton}>
-                                <span>редактировать</span>
-                                <EditIcon />
-                            </div>
-                        </div>
-                        <Routes>
-                            {navigationItems.map((item, index) => (
-                                <Route
-                                    key={index}
-                                    path={item.relativePath}
-                                    element={<item.element />}
-                                />
-                            ))}
+                    <Routes>
+                        {navigationItems.map((item, index) => (
                             <Route
-                                path='*'
-                                element={<Navigate to='/account/information' />}
+                                key={index}
+                                path={item.relativePath}
+                                element={item.element}
                             />
-                        </Routes>
-                    </div>
+                        ))}
+                        <Route
+                            path='*'
+                            element={<Navigate to='/account/information' />}
+                        />
+                    </Routes>
                 </div>
             </div>
         </PageWithNavBar>

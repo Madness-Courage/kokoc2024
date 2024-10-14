@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import styles from './Login.module.css'
-import { ReactComponent as RightLongArrow } from '../../../assets/icons/right-long-arrow-white.svg'
-import { useAppDispatch, useAppSelector } from '../../../store/store'
-import { login } from '../../../api/user'
 import { useNavigate } from 'react-router-dom'
+import { login } from '../../../api/user'
+import { ReactComponent as RightLongArrow } from '../../../assets/icons/right-long-arrow-white.svg'
+import { setShowAuthModal } from '../../../store/slices/dataSlice'
+import { useAppDispatch, useAppSelector } from '../../../store/store'
+import styles from './Login.module.css'
 
 const Login: React.FC = () => {
     const user = useAppSelector((state) => state.user)
@@ -27,6 +28,7 @@ const Login: React.FC = () => {
 
     useEffect(() => {
         if (!user.login.loading && user.login.result) {
+            dispatch(setShowAuthModal(false))
             navigate('/account')
         }
     }, [user.login.loading])

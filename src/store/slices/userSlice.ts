@@ -3,8 +3,10 @@ import {
     getProfile,
     IGetProfileResult,
     ILoginResult,
+    IRefreshTokenResult,
     IRegisterResult,
     login,
+    refreshToken,
     register,
 } from '../../api/user'
 
@@ -22,6 +24,11 @@ interface IInitialState {
     getProfile: {
         loading: boolean
         result: IGetProfileResult | null
+        error: string | null
+    }
+    refreshToken: {
+        loading: boolean
+        result: IRefreshTokenResult | null
         error: string | null
     }
 }
@@ -42,6 +49,11 @@ const initialState: IInitialState = {
         result: null,
         error: null,
     },
+    refreshToken: {
+        loading: false,
+        result: null,
+        error: null,
+    },
 }
 
 const userSlice = createSlice({
@@ -56,6 +68,7 @@ const userSlice = createSlice({
             .addCase(register.rejected, (state, action) => {
                 state.register.loading = false
                 state.register.error = action.payload as string
+                state.register.result = null
             })
             .addCase(register.fulfilled, (state, action) => {
                 state.register.loading = false
@@ -69,6 +82,7 @@ const userSlice = createSlice({
             .addCase(login.rejected, (state, action) => {
                 state.login.loading = false
                 state.login.error = action.payload as string
+                state.login.result = null
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.login.loading = false
@@ -82,10 +96,25 @@ const userSlice = createSlice({
             .addCase(getProfile.rejected, (state, action) => {
                 state.getProfile.loading = false
                 state.getProfile.error = action.payload as string
+                state.getProfile.result = null
             })
             .addCase(getProfile.fulfilled, (state, action) => {
                 state.getProfile.loading = false
                 state.getProfile.result = action.payload
+            })
+
+        builder
+            .addCase(refreshToken.pending, (state) => {
+                state.refreshToken.loading = true
+            })
+            .addCase(refreshToken.rejected, (state, action) => {
+                state.refreshToken.loading = false
+                state.refreshToken.error = action.payload as string
+                state.refreshToken.result = null
+            })
+            .addCase(refreshToken.fulfilled, (state, action) => {
+                state.refreshToken.loading = false
+                state.refreshToken.result = action.payload
             })
     },
 })

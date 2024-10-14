@@ -3,6 +3,7 @@ import styles from './History.module.css'
 import Order from './Order/Order'
 import Filters from '../Filters/Filters'
 import Pagination from '../Pagination/Pagination'
+import Content from '../Content/Content'
 
 const History: React.FC = () => {
     const orders = [
@@ -21,15 +22,21 @@ const History: React.FC = () => {
     ]
 
     return (
-        <div className={styles.history}>
-            <Filters />
-            <span className={styles.title}>магазин</span>
-            <Pagination minPage={1} maxPage={10} currentPage={1}>
-                {orders.map((item, index) => (
-                    <Order key={index} number={item.number} date={item.date} />
-                ))}
-            </Pagination>
-        </div>
+        <Content title='история покупок'>
+            <div className={styles.history}>
+                <Filters />
+                <span className={styles.title}>магазин</span>
+                <Pagination minPage={1} maxPage={10} currentPage={1}>
+                    {orders.map((item, index) => (
+                        <Order
+                            key={index}
+                            number={item.number}
+                            date={item.date}
+                        />
+                    ))}
+                </Pagination>
+            </div>
+        </Content>
     )
 }
 
