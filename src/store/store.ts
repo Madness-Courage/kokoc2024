@@ -13,8 +13,10 @@ import {
     REGISTER,
     REHYDRATE,
 } from 'redux-persist'
+import productsSlice from './slices/productsSlice'
 
 const reducers = combineReducers({
+    products: productsSlice.reducer,
     user: userSlice.reducer,
     data: dataSlice.reducer,
 })

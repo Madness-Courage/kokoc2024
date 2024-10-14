@@ -23,51 +23,14 @@
 
 .imagesBlock {
     display: flex;
+    flex-direction: column;
     gap: 32px;
 }
 
-.imagesBlock .goodsBlock {
+.goodsBlock {
     display: flex;
     flex: 1;
     gap: 32px;
-}
-
-.firstImagesBlock,
-.secondImagesBlock .firstGoodsBlock {
-    min-height: 876px;
-}
-
-.firstImagesBlock .goodsBlock {
-    flex-direction: column;
-}
-
-.secondImagesBlock {
-    flex-direction: column;
-}
-
-.secondImagesBlock .goodsBlock .textsBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.secondImagesBlock .goodsBlock .textsBlock .title {
-    font-family: MuseoSansCyrl;
-    font-size: 48px;
-    font-weight: 900;
-    color: #000;
-}
-
-.secondImagesBlock .goodsBlock .textsBlock .subtitle {
-    font-family: MuseoSansCyrl;
-    font-size: 40px;
-    font-weight: 300;
-    color: #000;
-}
-
-.secondImagesBlock .goodsBlock > * {
-    gap: 32px;
-    flex: 1;
 }
 
 @media (max-width: 1440px) {
@@ -84,17 +47,8 @@
         gap: 36px;
     }
 
-    .firstImagesBlock,
-    .secondImagesBlock .firstGoodsBlock {
+    .imagesBlock {
         min-height: 525px;
-    }
-
-    .secondImagesBlock .goodsBlock .textsBlock .title {
-        font-size: 40px;
-    }
-
-    .secondImagesBlock .goodsBlock .textsBlock .subtitle {
-        font-size: 36px;
     }
 }
 
@@ -112,17 +66,8 @@
         gap: 28px;
     }
 
-    .firstImagesBlock,
-    .secondImagesBlock .firstGoodsBlock {
+    .imagesBlock {
         min-height: 438px;
-    }
-
-    .secondImagesBlock .goodsBlock .textsBlock .title {
-        font-size: 36px;
-    }
-
-    .secondImagesBlock .goodsBlock .textsBlock .subtitle {
-        font-size: 32px;
     }
 }
 
@@ -140,16 +85,7 @@
         gap: 20px;
     }
 
-    .firstImagesBlock,
-    .secondImagesBlock .firstGoodsBlock {
+    .imagesBlock {
         min-height: 351px;
-    }
-
-    .secondImagesBlock .goodsBlock .textsBlock .title {
-        font-size: 32px;
-    }
-
-    .secondImagesBlock .goodsBlock .textsBlock .subtitle {
-        font-size: 28px;
     }
 }
