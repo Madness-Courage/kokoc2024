@@ -1,0 +1,109 @@
+.order {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f6f6f6;
+    border-radius: 16px;
+    padding: 32px;
+    min-height: 201px;
+}
+
+.leftBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    font-family: MuseoSansCyrl;
+    font-size: 32px;
+    font-weight: 900;
+    color: #3a3a3a;
+}
+
+.date {
+    font-family: MuseoSansCyrl;
+    font-size: 20px;
+    font-weight: 500;
+    color: #747474;
+}
+
+.rightBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.detailsButton {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    padding: 12px 32px;
+    border: 2px solid #555555;
+    border-radius: 99px;
+    font-family: MuseoSansCyrl;
+    font-size: 16px;
+    font-weight: 700;
+    color: #555555;
+    text-transform: uppercase;
+}
+
+@media (max-width: 1440px) {
+    .order {
+        padding: 28px;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .date {
+        font-size: 18px;
+    }
+
+    .detailsButton {
+        gap: 48px;
+        padding: 10px 28px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .order {
+        padding: 24px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .date {
+        font-size: 16px;
+    }
+
+    .detailsButton {
+        gap: 32px;
+        padding: 10px 24px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .order {
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .date {
+        font-size: 14px;
+    }
+
+    .detailsButton {
+        gap: 24px;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

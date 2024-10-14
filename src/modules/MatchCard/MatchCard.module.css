@@ -1,0 +1,166 @@
+.matchCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 0 solid #eee;
+    border-radius: 10px;
+    width: 100%;
+}
+
+/* Левый блок с датой и временем */
+.matchDetails {
+    flex: 1; /* Задаём растяжение на 1 часть пространства */
+    display: flex;
+    flex-direction: column;
+}
+
+.date {
+    margin-top: 0;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.time, .place {
+    margin-top: 0;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 0;
+}
+
+/* Центральный блок с командами */
+.teams {
+    flex: 2; /* Больше места для команд и VS */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Выровняем команды и VS по центру */
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 5px;
+}
+
+.teamName {
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.vs {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 20px;
+}
+
+.score {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 20px;
+}
+
+/* Правый блок с регистрацией */
+.registration {
+    margin-top: 26px;
+    padding: 0;
+    flex: 2; /* Растягиваем блок регистрации, чтобы был равен по ширине блоку даты */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerButton {
+    background-color: red;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.registerButton:hover {
+    background-color: darkred;
+}
+
+.iframeContainer {
+    position: fixed; /* Фиксированное положение */
+    top: 100px; /* Отступ от верха страницы */
+    right: 40px; /* Отступ от правого края */
+    z-index: -1; /* Z-index ниже контента */
+    width: auto; /* Автоматическая ширина для изменения размеров */
+    display: flex;
+    justify-content: center;
+}
+
+/* Обязательно нужно установить z-index контента PageTemplate выше */
+.pageContainer {
+    position: relative;
+    z-index: 2; /* Устанавливаем z-index выше для контента */
+}
+
+
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    .matchCard {
+        flex-direction: column;
+    }
+
+    .matchDetails {
+        gap: 10px;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .place {
+        margin-top: 5px;
+    }
+
+    .teams {
+        gap: 10px;
+    }
+
+    .vs {
+        margin: 0;
+    }
+
+    .registration{
+        margin-top: 0;
+    }
+}
+
+/* Вертикальное расположение */
+.vertical {
+    flex-direction: column;
+}
+
+.vertical .matchDetails {
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.vertical .teams {
+    gap: 10px;
+}
+
+.vertical .vs {
+    margin: 0;
+}
+
+.vertical .registration {
+    margin-top: 0;
+}
+

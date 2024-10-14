@@ -1,0 +1,37 @@
+.subscriptions {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.subscriptionsBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.title {
+    font-family: MuseoSansCyrl;
+    font-size: 40px;
+    font-weight: 900;
+    color: #777777;
+    text-transform: uppercase;
+}
+
+@media (max-width: 1440px) {
+    .title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 28px;
+    }
+}

@@ -1,0 +1,120 @@
+.commentsContainer {
+    width: 100%;
+    padding: 20px;
+    padding-top: 0;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+.commentsHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.commentsTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.commentsCount {
+    font-size: 18px;
+    color: #888;
+}
+
+.authMessage {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.commentForm {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.commentInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    resize: none;
+}
+
+.submitButton {
+    margin-top: 0;
+    margin-right: 0;
+    align-self: self-end;
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background-color: darkred;
+}
+
+.commentsList {
+    margin-top: 20px;
+}
+
+.commentItem {
+    background-color: white;
+    padding: 15px 15px 1px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.commentHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.avatarSmall {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.commentAuthor {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.commentDate {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+}
+
+.commentText {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.allForm {
+    margin: 0;
+}

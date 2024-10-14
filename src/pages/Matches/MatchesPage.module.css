@@ -1,0 +1,151 @@
+.matchContainer {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1000px;
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    .matchContainer {
+        padding-left: 0;
+    }
+}
+
+.container {
+    text-align: left;
+    margin: 20px;
+    position: relative;
+}
+
+.title {
+    margin-top: 0;
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.tabs {
+    margin-top: 0;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.tabButton {
+    margin-top: 0;
+    font-size: 20px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    color: black;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.tabButton:hover {
+    color: red;
+}
+
+.active {
+    color: red;
+}
+
+.underline {
+    margin-top: 0;
+    position: relative;
+    bottom: 0;
+    height: 4px;
+    width: 170px;
+    background-color: red;
+    transition: left 0.3s ease;
+}
+
+.content {
+    margin-top: 20px;
+}
+
+.matchList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.matchItem {
+    margin-top: 12px;
+    padding: 0;
+}
+
+.divider {
+    height: 1px;
+    width: 100%;
+    background-color: #ccc;
+    margin: 10px 0;
+}
+
+.monthTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: capitalize; /* Делает первую букву заглавной */
+    color: #333;
+}
+
+iframe {
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/* src/pages/MatchesPage.module.css */
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; /* Высота контейнера загрузки */
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: red; /* Цвет индикатора */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.errorMessage {
+    text-align: center;
+    color: #888;
+    font-size: 16px;
+    padding: 20px;
+}
+
+.noMatchesMessage {
+    text-align: center;
+    color: #888;
+    font-size: 16px;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 30px;
+    }
+    .tabButton {
+        font-size: 18px;
+    }
+}

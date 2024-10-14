@@ -1,0 +1,91 @@
+.collectionsPage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 120px;
+    gap: 120px;
+}
+
+.title {
+    font-family: MuseoSansCyrl;
+    font-size: 64px;
+    font-weight: 900;
+    color: #343434;
+    text-transform: uppercase;
+}
+
+.collectionBlock {
+    display: flex;
+    flex: 1;
+    gap: 40px;
+    flex-direction: column;
+}
+
+.imagesBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.goodsBlock {
+    display: flex;
+    flex: 1;
+    gap: 32px;
+}
+
+@media (max-width: 1440px) {
+    .title {
+        font-size: 48px;
+    }
+
+    .collectionsPage {
+        padding: 96px;
+        gap: 96px;
+    }
+
+    .collectionBlock {
+        gap: 36px;
+    }
+
+    .imagesBlock {
+        min-height: 525px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 36px;
+    }
+
+    .collectionsPage {
+        padding: 64px;
+        gap: 64px;
+    }
+
+    .collectionBlock {
+        gap: 28px;
+    }
+
+    .imagesBlock {
+        min-height: 438px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 24px;
+    }
+
+    .collectionsPage {
+        padding: 32px;
+        gap: 32px;
+    }
+
+    .collectionBlock {
+        gap: 20px;
+    }
+
+    .imagesBlock {
+        min-height: 351px;
+    }
+}

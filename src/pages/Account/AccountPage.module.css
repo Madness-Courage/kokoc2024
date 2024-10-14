@@ -1,0 +1,93 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+    padding: 64px 120px;
+    gap: 40px;
+}
+
+.headerBlock {
+    display: flex;
+    align-items: flex-end;
+}
+
+.backButton {
+    gap: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: MuseoSansCyrl;
+    font-size: 24px;
+    font-weight: 500;
+    color: #707070;
+    cursor: pointer;
+}
+
+.mainBlock {
+    display: flex;
+    gap: 32px;
+}
+
+.navigationBlock {
+    gap: 16px;
+    display: flex;
+    padding: 40px 32px;
+    flex-direction: column;
+    background-color: #f6f6f6;
+    border-radius: 16px;
+}
+
+.navigationItem {
+    font-family: MuseoSansCyrl;
+    font-size: 24px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #a8a8b7;
+}
+
+.navigationItemSelected {
+    font-weight: 700;
+    color: #343434;
+}
+
+@media (max-width: 1440px) {
+    .page {
+        padding: 48px 96px;
+    }
+
+    .navigationBlock {
+        padding: 36px 28px;
+    }
+
+    .navigationItem {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .page {
+        padding: 32px 64px;
+    }
+
+    .navigationBlock {
+        padding: 32px 24px;
+    }
+
+    .navigationItem {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 24px 64px;
+    }
+
+    .navigationBlock {
+        padding: 28px 20px;
+    }
+
+    .navigationItem {
+        font-size: 16px;
+    }
+}
