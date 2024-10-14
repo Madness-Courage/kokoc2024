@@ -23,7 +23,7 @@ export const getNews = async (): Promise<NewsItem[]> => {
             image: news.image || placeholders[Math.floor(Math.random() * placeholders.length)], // Случайная картинка
             title: news.title,
             description: news.text, // Поле text маппим в описание
-            date: new Date(news.created_at).toLocaleDateString('ru-RU', {
+            date: new Date(news.created_at).toLocaleDateString('en-EN', {
                 day: '2-digit',
                 month: '2-digit',
                 year: 'numeric'

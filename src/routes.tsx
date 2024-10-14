@@ -12,7 +12,11 @@ import MatchesPage from './pages/Matches/MatchesPage'
 import NewsPage from './pages/News/NewsPage'
 import TeamPage from './pages/Team/TeamPage'
 import AboutPage from './pages/About/AboutPage'
+
 import CollectionsPage from './pages/Collections/CollectionsPage'
+
+import AdminPanel from './pages/AdminPanel/AdminPanel'
+
 
 const AppRoutes: React.FC = () => {
     return (
@@ -57,6 +61,14 @@ const AppRoutes: React.FC = () => {
                     element={
                         <PrimeReactProvider>
                             <AboutPage />
+                        </PrimeReactProvider>
+                    }
+                />
+                <Route
+                    path='/admin'
+                    element={
+                        <PrimeReactProvider>
+                            <AdminPanel />
                         </PrimeReactProvider>
                     }
                 />

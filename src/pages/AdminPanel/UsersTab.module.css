@@ -1,0 +1,35 @@
+.usersTab {
+    padding: 20px;
+}
+
+.inputGroup {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+.message {
+    margin-top: 20px;
+    color: #28a745;
+    font-weight: bold;
+}

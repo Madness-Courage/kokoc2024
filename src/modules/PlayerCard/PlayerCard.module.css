@@ -15,7 +15,7 @@
 
 .image {
     width: 100%;
-    height: 300px; /* Пропорции 2 на 3 */
+    height: 250px; /* Пропорции 2 на 3 */
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 10px;

@@ -57,38 +57,40 @@ const MainPage: React.FC = () => {
         <PageTemplate newsItem={news}>
             <div className={styles.conteiner}>
                 <div className={styles.redBackground}>
-                    <img src={lines} className={styles.backgroundImage} />
-                    <div className={styles.headerRow}>
-                        <h1 className={styles.title}>МАТЧИ</h1>
-                        <button className={styles.moreButton} onClick={() => window.location.href = '/matches'}>
-                            ПОДРОБНЕЕ →
-                        </button>
-                    </div>
-                    <div className={styles.subHeader}>
-                        <div className={styles.pastContainer}>
-                            <span className={styles.pastMatches}>ПРОШЛЫЙ МАТЧ</span>
-                            <div className={styles.pastUnderline}></div>
-                            <div className={styles.matchBox}>
-                                {pastMatch ? (
-                                    <MatchCard match={pastMatch} isVertical={true} />
-                                ) : (
-                                    <p>Мы не нашли прошедших матчей</p>
-                                )}
-                            </div>
+                    <div className={styles.spacer}>
+                        <img src={lines} className={styles.backgroundImage} />
+                        <div className={styles.headerRow}>
+                            <h1 className={styles.title}>МАТЧИ</h1>
+                            <button className={styles.moreButton} onClick={() => window.location.href = '/matches'}>
+                                ПОДРОБНЕЕ →
+                            </button>
                         </div>
-                        <div className={styles.upcomingContainer}>
-                            <span className={styles.upcomingMatches}>ПРЕДСТОЯЩИЕ МАТЧИ</span>
-                            <div className={styles.upcomingUnderline}></div>
-                            <div className={styles.matchBox}>
-                                {upcomingMatches.length > 0 ? (
-                                    upcomingMatches.map(match => (
-                                        <div key={match.start_time} className={styles.matchBox}>
-                                            <MatchCard match={match} isVertical={true} />
-                                        </div>
-                                    ))
-                                ) : (
-                                    <p>Ждите матчей, они обязательно будут</p>
-                                )}
+                        <div className={styles.subHeader}>
+                            <div className={styles.pastContainer}>
+                                <span className={styles.pastMatches}>ПРОШЛЫЙ МАТЧ</span>
+                                <div className={styles.pastUnderline}></div>
+                                <div className={styles.matchBox}>
+                                    {pastMatch ? (
+                                        <MatchCard match={pastMatch} isVertical={true} />
+                                    ) : (
+                                        <p>Мы не нашли прошедших матчей</p>
+                                    )}
+                                </div>
+                            </div>
+                            <div className={styles.upcomingContainer}>
+                                <span className={styles.upcomingMatches}>ПРЕДСТОЯЩИЕ МАТЧИ</span>
+                                <div className={styles.upcomingUnderline}></div>
+                                <div className={styles.matchBox}>
+                                    {upcomingMatches.length > 0 ? (
+                                        upcomingMatches.map(match => (
+                                            <div key={match.start_time} className={styles.matchBox}>
+                                                <MatchCard match={match} isVertical={true} />
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p>Ждите матчей, они обязательно будут</p>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
