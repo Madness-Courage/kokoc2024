@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Subscriptions.module.css'
 import Subscription from './Subscription/Subscription'
+import Content from '../Content/Content'
 
 const Subscriptions: React.FC = () => {
     const activeSubscriptions = [
@@ -46,31 +47,33 @@ const Subscriptions: React.FC = () => {
     ]
 
     return (
-        <div className={styles.subscriptions}>
-            <div className={styles.subscriptionsBlock}>
-                <span className={styles.title}>активные подписки</span>
-                {activeSubscriptions.map((item, index) => (
-                    <Subscription
-                        name={item.name}
-                        status={item.status}
-                        startDate={item.startDate}
-                        endDate={item.endDate}
-                        active
-                    />
-                ))}
+        <Content title='подписки'>
+            <div className={styles.subscriptions}>
+                <div className={styles.subscriptionsBlock}>
+                    <span className={styles.title}>активные подписки</span>
+                    {activeSubscriptions.map((item, index) => (
+                        <Subscription
+                            name={item.name}
+                            status={item.status}
+                            startDate={item.startDate}
+                            endDate={item.endDate}
+                            active
+                        />
+                    ))}
+                </div>
+                <div className={styles.subscriptionsBlock}>
+                    <span className={styles.title}>неактивные подписки</span>
+                    {activeSubscriptions.map((item, index) => (
+                        <Subscription
+                            name={item.name}
+                            status={item.status}
+                            startDate={item.startDate}
+                            endDate={item.endDate}
+                        />
+                    ))}
+                </div>
             </div>
-            <div className={styles.subscriptionsBlock}>
-                <span className={styles.title}>неактивные подписки</span>
-                {activeSubscriptions.map((item, index) => (
-                    <Subscription
-                        name={item.name}
-                        status={item.status}
-                        startDate={item.startDate}
-                        endDate={item.endDate}
-                    />
-                ))}
-            </div>
-        </div>
+        </Content>
     )
 }
 

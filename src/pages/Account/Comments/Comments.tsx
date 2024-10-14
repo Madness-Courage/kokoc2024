@@ -4,6 +4,7 @@ import PlaceholderImage from '../../../assets/images/placeholder_4.jpg'
 import styles from './Comments.module.css'
 import Comment from './Comment/Comment'
 import Pagination from '../Pagination/Pagination'
+import Content from '../Content/Content'
 
 const Comments: React.FC = () => {
     const comments = [
@@ -28,20 +29,22 @@ const Comments: React.FC = () => {
     ]
 
     return (
-        <div className={styles.comments}>
-            <Filters />
-            <Pagination minPage={1} maxPage={10} currentPage={1}>
-                {comments.map((item, index) => (
-                    <Comment
-                        key={index}
-                        date={item.date}
-                        names={item.names}
-                        text={item.text}
-                        image={item.image}
-                    />
-                ))}
-            </Pagination>
-        </div>
+        <Content title='комментарии'>
+            <div className={styles.comments}>
+                <Filters />
+                <Pagination minPage={1} maxPage={10} currentPage={1}>
+                    {comments.map((item, index) => (
+                        <Comment
+                            key={index}
+                            date={item.date}
+                            names={item.names}
+                            text={item.text}
+                            image={item.image}
+                        />
+                    ))}
+                </Pagination>
+            </div>
+        </Content>
     )
 }
 

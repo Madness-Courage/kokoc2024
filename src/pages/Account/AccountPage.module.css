@@ -50,40 +50,44 @@
     color: #343434;
 }
 
-.contentBlock {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 43px;
+@media (max-width: 1440px) {
+    .page {
+        padding: 48px 96px;
+    }
+
+    .navigationBlock {
+        padding: 36px 28px;
+    }
+
+    .navigationItem {
+        font-size: 20px;
+    }
 }
 
-.titleBlock {
-    display: flex;
-    justify-content: space-between;
+@media (max-width: 1024px) {
+    .page {
+        padding: 32px 64px;
+    }
+
+    .navigationBlock {
+        padding: 32px 24px;
+    }
+
+    .navigationItem {
+        font-size: 18px;
+    }
 }
 
-.title {
-    font-family: MuseoSansCyrl;
-    font-size: 48px;
-    font-weight: 900;
-    color: #525252;
-    text-transform: uppercase;
-}
+@media (max-width: 768px) {
+    .page {
+        padding: 24px 64px;
+    }
 
-.editButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 32px;
-    gap: 96px;
-    background: #e22726;
-    border-radius: 99px;
-}
+    .navigationBlock {
+        padding: 28px 20px;
+    }
 
-.editButton > span {
-    text-transform: uppercase;
-    font-family: MuseoSansCyrl;
-    font-size: 24px;
-    font-weight: 700;
-    color: #f9f9f9;
+    .navigationItem {
+        font-size: 16px;
+    }
 }

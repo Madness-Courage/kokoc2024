@@ -1,22 +1,24 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import styles from './NavBar.module.css'
-import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg'
-import { ReactComponent as SearchDarkIcon } from '../../assets/icons/search-dark.svg'
 import { ReactComponent as ProfileIcon } from '../../assets/icons/account.svg'
-import { ReactComponent as ProfileDarkIcon } from '../../assets/icons/account-dark.svg'
 import { ReactComponent as CartIcon } from '../../assets/icons/cart.svg'
-import { ReactComponent as CartDarkIcon } from '../../assets/icons/cart-dark.svg'
 import { ReactComponent as MenuIcon } from '../../assets/icons/menu.svg'
-import { ReactComponent as MenuDarkIcon } from '../../assets/icons/menu-dark.svg'
+import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg'
 import logo from '../../assets/images/logo.svg'
 import { navigationItems } from '../../config/navigation'
+import styles from './NavBar.module.css'
+import { useAppDispatch, useAppSelector } from '../../store/store'
+import { setShowAuthModal } from '../../store/slices/dataSlice'
+import AuthModal from '../AuthModal/AuthModal'
 
 interface NavBarProps {
     dark?: boolean
 }
 
 const NavBar: React.FC<NavBarProps> = ({ dark = false }) => {
+    const data = useAppSelector((state) => state.data)
+
+    const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
     const [menuVisible, setMenuVisible] = useState(false) // Управление видимостью меню
@@ -80,6 +82,7 @@ const NavBar: React.FC<NavBarProps> = ({ dark = false }) => {
 
     return (
         <div className={styles.navbar}>
+            <AuthModal show={data.showAuthModal} />
             {/* Левая часть: Логотип и вкладки */}
             <div className={styles.leftSection}>
                 <img src={logo} alt='Logo' className={styles.logo} />
@@ -116,7 +119,11 @@ const NavBar: React.FC<NavBarProps> = ({ dark = false }) => {
                     }}
                 />
                 <ProfileIcon
-                    onClick={() => navigate('/account')}
+                    onClick={() =>
+                        data.authorized
+                            ? navigate('/account')
+                            : dispatch(setShowAuthModal(true))
+                    }
                     className={styles.icon}
                     style={{
                         filter: dark

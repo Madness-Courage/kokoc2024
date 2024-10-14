@@ -44,7 +44,6 @@
     font-family: MuseoSansCyrl;
     font-size: 24px;
     font-weight: 700;
-    color: #a8a8b7;
     border-radius: 16px;
 }
 
@@ -57,6 +56,7 @@
 
 .selectsBlock {
     display: flex;
+    flex-wrap: wrap;
     flex: 1;
     gap: 32px;
 }
@@ -72,4 +72,43 @@
     font-weight: 500;
     background-repeat: no-repeat;
     background-position: right 20px center;
+}
+
+@media (max-width: 1440px) {
+    .image {
+        width: 170px;
+        height: 170px;
+    }
+
+    .input,
+    .select {
+        padding: 18px 28px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .input,
+    .select {
+        padding: 16px 24px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .image {
+        width: 130px;
+        height: 130px;
+    }
+
+    .input,
+    .select {
+        padding: 14px 20px;
+        font-size: 16px;
+    }
 }
