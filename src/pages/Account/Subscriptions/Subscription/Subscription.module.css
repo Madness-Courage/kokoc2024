@@ -4,6 +4,7 @@
     padding: 32px;
     justify-content: space-between;
     border-radius: 16px;
+    gap: 20px;
 }
 
 .leftBlock {
@@ -48,6 +49,7 @@
     font-weight: 700;
     border-radius: 32px;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .activeButton {
@@ -58,4 +60,76 @@
 .cancelButton {
     background-color: #f22726;
     color: #fff;
+}
+
+@media (max-width: 1440px) {
+    .subscription {
+        padding: 28px;
+    }
+
+    .name {
+        font-size: 28px;
+    }
+
+    .status {
+        font-size: 18px;
+    }
+
+    .date {
+        font-size: 18px;
+        margin-top: 30px;
+    }
+
+    .button {
+        padding: 10px 28px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .subscription {
+        padding: 24px;
+    }
+
+    .name {
+        font-size: 24px;
+    }
+
+    .status {
+        font-size: 16px;
+    }
+
+    .date {
+        font-size: 16px;
+        margin-top: 26px;
+    }
+
+    .button {
+        padding: 8px 24px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .subscription {
+        padding: 20px;
+    }
+
+    .name {
+        font-size: 20px;
+    }
+
+    .status {
+        font-size: 14px;
+    }
+
+    .date {
+        font-size: 14px;
+        margin-top: 20px;
+    }
+
+    .button {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
 }

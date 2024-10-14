@@ -12,3 +12,21 @@
     color: #777777;
     text-transform: uppercase;
 }
+
+@media (max-width: 1440px) {
+    .title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 28px;
+    }
+}

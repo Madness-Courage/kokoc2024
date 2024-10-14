@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     gap: 40px;
+    flex-wrap: wrap;
 }
 
 .filterInput {
@@ -20,6 +21,7 @@
 
 .filterButton {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     border: 2px solid #868686;
     border-radius: 16px;
@@ -32,4 +34,42 @@
     font-family: Poppins;
     font-size: 16px;
     font-weight: 700;
+}
+
+@media (max-width: 1440px) {
+    .filterInput {
+        padding: 18px 28px;
+        font-size: 20px;
+    }
+
+    .filterButton {
+        gap: 48px;
+        padding: 18px 28px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .filterInput {
+        padding: 16px 24px;
+        font-size: 18px;
+    }
+
+    .filterButton {
+        flex: 1;
+        gap: 32px;
+        padding: 16px 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .filterInput {
+        padding: 14px 20px;
+        font-size: 16px;
+    }
+
+    .filterButton {
+        flex: 1;
+        gap: 28px;
+        padding: 14px 20px;
+    }
 }

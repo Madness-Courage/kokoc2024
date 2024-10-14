@@ -49,3 +49,72 @@
     font-weight: 700;
     color: #838383;
 }
+
+@media (max-width: 1440px) {
+    .image {
+        width: 70px;
+        height: 70px;
+    }
+
+    .comment {
+        padding: 28px;
+    }
+
+    .names {
+        font-size: 20px;
+    }
+
+    .text {
+        font-size: 18px;
+    }
+
+    .date {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .comment {
+        padding: 24px;
+    }
+
+    .names {
+        font-size: 18px;
+    }
+
+    .text {
+        font-size: 16px;
+    }
+
+    .date {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .image {
+        width: 50px;
+        height: 50px;
+    }
+
+    .comment {
+        padding: 20px;
+    }
+
+    .names {
+        font-size: 16px;
+    }
+
+    .text {
+        font-size: 14px;
+    }
+
+    .date {
+        font-size: 14px;
+    }
+}

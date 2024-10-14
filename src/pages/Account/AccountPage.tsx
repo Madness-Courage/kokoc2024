@@ -16,42 +16,42 @@ import History from './History/History'
 import Matches from './Matches/Matches'
 import Comments from './Comments/Comments'
 
+export const navigationItems = [
+    {
+        text: 'Личная информация',
+        relativePath: 'information',
+        absolutePath: '/account/information',
+        element: Information,
+    },
+    {
+        text: 'Подписки',
+        relativePath: 'subscriptions',
+        absolutePath: '/account/subscriptions',
+        element: Subscriptions,
+    },
+    {
+        text: 'История покупок',
+        relativePath: 'history',
+        absolutePath: '/account/history',
+        element: History,
+    },
+    {
+        text: 'Посещенные матчи',
+        relativePath: 'matches',
+        absolutePath: '/account/matches',
+        element: Matches,
+    },
+    {
+        text: 'Комментарии',
+        relativePath: 'comments',
+        absolutePath: '/account/comments',
+        element: Comments,
+    },
+]
+
 const AccountPage: React.FC = () => {
     const location = useLocation()
     const navigate = useNavigate()
-
-    const navigationItems = [
-        {
-            text: 'Личная информация',
-            relativePath: 'information',
-            absolutePath: '/account/information',
-            element: <Information />,
-        },
-        {
-            text: 'Подписки',
-            relativePath: 'subscriptions',
-            absolutePath: '/account/subscriptions',
-            element: <Subscriptions />,
-        },
-        {
-            text: 'История покупок',
-            relativePath: 'history',
-            absolutePath: '/account/history',
-            element: <History />,
-        },
-        {
-            text: 'Посещенные матчи',
-            relativePath: 'matches',
-            absolutePath: '/account/matches',
-            element: <Matches />,
-        },
-        {
-            text: 'Комментарии',
-            relativePath: 'comments',
-            absolutePath: '/account/comments',
-            element: <Comments />,
-        },
-    ]
 
     return (
         <PageWithNavBar dark>
@@ -103,7 +103,7 @@ const AccountPage: React.FC = () => {
                                 <Route
                                     key={index}
                                     path={item.relativePath}
-                                    element={item.element}
+                                    element={<item.element />}
                                 />
                             ))}
                             <Route
