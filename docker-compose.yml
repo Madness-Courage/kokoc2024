@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./
+    restart: on-failure
+    ports:
+      - "3006:3006"
