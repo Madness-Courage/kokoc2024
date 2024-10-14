@@ -32,8 +32,9 @@
     gap: 32px;
 }
 
-.firstImagesBlock {
-    height: 876px;
+.firstImagesBlock,
+.secondImagesBlock .firstGoodsBlock {
+    min-height: 876px;
 }
 
 .firstImagesBlock .goodsBlock {
@@ -64,11 +65,91 @@
     color: #000;
 }
 
-.secondImagesBlock .firstGoodsBlock {
-    min-height: 876px;
-}
-
 .secondImagesBlock .goodsBlock > * {
     gap: 32px;
     flex: 1;
+}
+
+@media (max-width: 1440px) {
+    .title {
+        font-size: 48px;
+    }
+
+    .collectionsPage {
+        padding: 96px;
+        gap: 96px;
+    }
+
+    .collectionBlock {
+        gap: 36px;
+    }
+
+    .firstImagesBlock,
+    .secondImagesBlock .firstGoodsBlock {
+        min-height: 525px;
+    }
+
+    .secondImagesBlock .goodsBlock .textsBlock .title {
+        font-size: 40px;
+    }
+
+    .secondImagesBlock .goodsBlock .textsBlock .subtitle {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 36px;
+    }
+
+    .collectionsPage {
+        padding: 64px;
+        gap: 64px;
+    }
+
+    .collectionBlock {
+        gap: 28px;
+    }
+
+    .firstImagesBlock,
+    .secondImagesBlock .firstGoodsBlock {
+        min-height: 438px;
+    }
+
+    .secondImagesBlock .goodsBlock .textsBlock .title {
+        font-size: 36px;
+    }
+
+    .secondImagesBlock .goodsBlock .textsBlock .subtitle {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 24px;
+    }
+
+    .collectionsPage {
+        padding: 32px;
+        gap: 32px;
+    }
+
+    .collectionBlock {
+        gap: 20px;
+    }
+
+    .firstImagesBlock,
+    .secondImagesBlock .firstGoodsBlock {
+        min-height: 351px;
+    }
+
+    .secondImagesBlock .goodsBlock .textsBlock .title {
+        font-size: 32px;
+    }
+
+    .secondImagesBlock .goodsBlock .textsBlock .subtitle {
+        font-size: 28px;
+    }
 }

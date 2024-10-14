@@ -31,3 +31,57 @@
     font-weight: 900;
     color: #ffffff;
 }
+
+@media (max-width: 1440px) {
+    .image {
+        padding: 48px;
+    }
+
+    .name {
+        font-size: 48px;
+    }
+
+    .priceBlock {
+        font-size: 48px;
+    }
+
+    .price {
+        font-size: 64px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .image {
+        padding: 32px;
+    }
+
+    .name {
+        font-size: 36px;
+    }
+
+    .priceBlock {
+        font-size: 36px;
+    }
+
+    .price {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .image {
+        padding: 24px;
+    }
+
+    .name {
+        font-size: 32px;
+    }
+
+    .priceBlock {
+        font-size: 28px;
+    }
+
+    .price {
+        font-size: 32px;
+    }
+}
