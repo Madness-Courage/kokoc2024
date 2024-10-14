@@ -1,3 +1,5 @@
+import userSlice from './slices/userSlice'
+import dataSlice from './slices/dataSlice'
 import storage from 'redux-persist/lib/storage'
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
@@ -12,7 +14,10 @@ import {
     REHYDRATE,
 } from 'redux-persist'
 
-const reducers = combineReducers({})
+const reducers = combineReducers({
+    user: userSlice.reducer,
+    data: dataSlice.reducer,
+})
 
 const store = configureStore({
     reducer: persistReducer(
