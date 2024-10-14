@@ -33,8 +33,6 @@ const CollectionsPage: React.FC = () => {
         dispatch(getProducts())
     }, [])
 
-    console.log(productsList)
-
     useEffect(() => {
         if (!products.getProducts.loading && products.getProducts.result) {
             setProductsList(
