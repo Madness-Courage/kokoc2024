@@ -1,0 +1,68 @@
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.containerBlock {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 64px 80px;
+    background-color: #fdffff;
+    max-width: 80%;
+    width: 100%;
+    min-width: 300px;
+    gap: 64px;
+    border-radius: 32px;
+}
+
+.imageBlock {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.mainBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 64px;
+    max-width: 769px;
+    width: 100%;
+    flex: 1;
+}
+
+.switchBlock {
+    display: flex;
+    width: 100%;
+    border: 2px solid #e22726;
+    border-radius: 32px;
+    padding: 2px;
+}
+
+.switchItem {
+    display: flex;
+    justify-content: center;
+    font-family: MuseoSansCyrl;
+    font-size: 24px;
+    font-weight: 700;
+    color: #3a322d;
+    text-transform: uppercase;
+    flex: 1;
+    padding: 18px 0;
+    border-radius: 32px;
+    cursor: pointer;
+}
+
+.switchSelectedItem {
+    background-color: #e22726;
+    color: #fdffff;
+}

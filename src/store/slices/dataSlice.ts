@@ -4,12 +4,16 @@ interface IInitialState {
     authorized: boolean
     refreshToken: string | null
     accessToken: string | null
+    showAuthModal: boolean
+    authModalLogin: boolean
 }
 
 const initialState: IInitialState = {
     authorized: false,
     refreshToken: null,
     accessToken: null,
+    showAuthModal: false,
+    authModalLogin: false,
 }
 
 const dataSlice = createSlice({
@@ -25,9 +29,20 @@ const dataSlice = createSlice({
         setAccessToken: (state, action: PayloadAction<string>) => {
             state.accessToken = action.payload
         },
+        setShowAuthModal: (state, action: PayloadAction<boolean>) => {
+            state.showAuthModal = action.payload
+        },
+        setAuthModalLogin: (state, action: PayloadAction<boolean>) => {
+            state.authModalLogin = action.payload
+        },
     },
 })
 
-export const { setAuthorized, setRefreshToken, setAccessToken } =
-    dataSlice.actions
+export const {
+    setAuthorized,
+    setRefreshToken,
+    setAccessToken,
+    setShowAuthModal,
+    setAuthModalLogin,
+} = dataSlice.actions
 export default dataSlice
